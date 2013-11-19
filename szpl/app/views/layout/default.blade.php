@@ -9,7 +9,41 @@
     <meta charset="utf-8">
     <script src="/js/jquery-1.10.2.js"></script>
     <script >
-  
+    	  $( document ).ready(function() {
+  		$("#loginBtn").on("click", function(e){
+			e.preventDefault();
+			var password = $("#inputPassword").val();
+			var email = $("#inputUsername").val();
+			var url = $("#loginForm").attr("action");
+			$.ajax({               //Login preko ajaxa, (experimentisanje da se u slucaju pogresnih unosa ne refresuje cijela stranica)
+				type:"POST",
+				url:url,
+				dataType:"json",
+				data: {
+					name :email,
+					password : password
+				},
+				success: function(data){
+					if (data.success){
+						window.location = data.redirectUrl;
+					}	
+					else{
+						$("#LoginError").show();
+						$("#LoginError").html(data.message);
+
+					}			
+				},
+				complete:function(data){
+					
+				},
+				error:function(data){
+						alert("Desila se greska " + data.message);
+
+				}
+			});
+
+  		});
+    });
     </script>
   </head>
  <style>
@@ -50,8 +84,13 @@
 									<li><a>@yield('link1.2')</a></li>
 								</ul>
 						  </li>
-							  <li><a href="#registracija" data-toggle="modal">@yield('rezervacija')</a></li>
-							  <li><a href="#login" data-toggle="modal">@yield('logout')</a></li>
+						  	  @if (Auth::check())
+							  <li><a href="#registracija" data-toggle="modal">@yield('Poruka')</a></li>
+							  <li><a href="/project/szpl/public/logout" class="logoutLink" data-toggle="modal">Logout</a></li>
+							  @else
+							  <li><a href="#registracija" data-toggle="modal">Guest User</a></li>
+							  <li><a href="/project/szpl/public/login" data-toggle="modal">Login</a></li>
+							  @endif
 						</ul>
 					</div>
 			</div>
@@ -64,44 +103,11 @@
 			  <h1>Dobrodošli</h1>
 		</div>	 
       </div>
-      <div class="container">
-		<div class="row-fluid">	
-			 <div class="span3">
-				 <h4>Informacije 1</h4>
-  					<div class="thumbnail">
-    					 <img src="img/AVION_LAN.jpg" alt="">
-    				 </div>
-    				
-  					<p> Upoznajte se sa nasom aplikacijom i pogledajte koje mogucnosti nudi. 
-  						
-  						</p>
-					 <a href="#" class="btn btn-info"id="showUsers" role="button">Test buttn</a>
-
-			 </div>  
-		</div>
-      </div>
-
-      <div id="user"></div>
+   
+@yield('mainContent')
 
 
-	<div class="navbar navbar-fixed-bottom">
-		<div class="navbar-inner">
-			<div class="container">
-				  <p class="muted"> SZPL</p>
-			</div>
-		</div>
-	</div>
-	<div id="ura" class="modal hide fade">
-		<div class="modal-header">
-			<h3>Zaglavlje informacija</h3>
-		</div>
-		<div class="modal-body">
-			<p>info</p>
-		</div>
-		<div class="modal-footer">
-				<p>info</p>
-		</div>
-	</div>
+	
 	<div id="login" class="modal hide fade">
 		<div class="modal-header">
 			<h2>Login</h2>
@@ -110,9 +116,9 @@
 		<div class="modal-body">
 			<form id="loginForm" class="form-horizontal" method="POST" action="/project/szpl/public/login">
 				<div class="control-group">
-					 <label class="control-label" for="inputEmail" >Email</label>
+					 <label class="control-label" for="inputUsername" >Username</label>
 					 <div class="controls">
-						<input type="text" id="inputEmail" name="name" placeholder="Email">
+						<input type="text" id="inputUsername" name="name" placeholder="Username">
 					 </div>
 				</div>
 				<div class="control-group">
@@ -130,12 +136,15 @@
 				 <div class="alert alert-danger" id="LoginError"></div>
 			</form>
 			<div class="modal-footer">
-
 			</div>
 		</div>
 	</div>
-	
 		
+	<div class="navbar navbar-fixed-bottom">
+		<div class="navbar-inner">
+		
+		</div>
+	</div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>

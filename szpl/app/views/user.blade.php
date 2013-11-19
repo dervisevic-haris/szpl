@@ -4,8 +4,8 @@
 Dobrodosli
 @stop
 
-@section('rezervacija')
-Dobrodosao {{ $name }}
+@section('Poruka')
+{{ $name }}
 @stop
 
 

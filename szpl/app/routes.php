@@ -13,9 +13,15 @@
 
 Route::get('/', function()
 {
-	return View::make('index');
-});
+	return View::make('homepage');
+})->before('guest');
 
 Route::post('login', array('uses'=>'IdentificationController@login'));
+Route::get('home',array('as'=>'home','uses'=>'IdentificationController@home'))->before('auth');
 
-Route::get('user',array('uses'=>'IdentificationController@user'));
+//Logout ruta
+Route::get('logout',array('as'=>'logout','uses'=>'IdentificationController@logout'));
+
+
+//Get-login
+Route::get('login',array('as'=>'login','uses'=>'IdentificationController@getlogin'))->before('guest');

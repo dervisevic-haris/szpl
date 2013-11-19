@@ -13,9 +13,9 @@
   		$("#loginBtn").on("click", function(e){
 			e.preventDefault();
 			var password = $("#inputPassword").val();
-			var email = $("#inputEmail").val();
+			var email = $("#inputUsername").val();
 			var url = $("#loginForm").attr("action");
-			$.ajax({
+			$.ajax({               //Login preko ajaxa, (experimentisanje da se u slucaju pogresnih unosa ne refresuje cijela stranica)
 				type:"POST",
 				url:url,
 				dataType:"json",
@@ -28,10 +28,8 @@
 						window.location = data.redirectUrl;
 					}	
 					else{
-						alert(data.message);
-
 						$("#LoginError").show();
-						$("#LoginError").append(data.message);
+						$("#LoginError").html(data.message);
 
 					}			
 				},
@@ -148,9 +146,9 @@
 		<div class="modal-body">
 			<form id="loginForm" class="form-horizontal" method="POST" action="/project/szpl/public/login">
 				<div class="control-group">
-					 <label class="control-label" for="inputEmail" >Email</label>
+					 <label class="control-label" for="inputUsername" >Username</label>
 					 <div class="controls">
-						<input type="text" id="inputEmail" name="name" placeholder="Email">
+						<input type="text" id="inputUsername" name="name" placeholder="Username">
 					 </div>
 				</div>
 				<div class="control-group">

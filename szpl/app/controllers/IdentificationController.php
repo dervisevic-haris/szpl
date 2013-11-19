@@ -14,37 +14,49 @@ class IdentificationController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	//Akcija getLogin 
+
+	public function getlogin(){
+		return View::make('login');
+	}
+
+	//Akcija Login za provjeru podataka poslanih ajaxom
 
 	public function login()
 	{
 		$obj = new stdClass;
 		$obj->success = false;
 		$obj->message = "Pogresni pristupni podaci";
-		$obj->redirectUrl ="/project/szpl/public/user";
+		$obj->redirectUrl ="/project/szpl/public/home";
 
-		if (isset($_SESSION['loggedIn'])) {
-				if($_SESSION["loggedIn"] == true){
-					$obj->success = true;
-				}
-		}
+		$user = array ('username'=>$_POST['name'],'password'=>$_POST['password']); // Kreiramo niz sa podacima poslatih sa forme i spasvamo u varijablu user koju proslijedjujemo Auth klasi i njenoj metodi Attempt da provjeri da li postoji takav user u bazi i ukoliko postoji da u sessiju doda njegov ID!
 
-		$user = user::where('email','=',$_POST['name'])->first();
-		$sifra=$user['password'];
-
-		if(Hash::check($_POST['password'],$sifra)){
-			$obj->success = true;
-		$_SESSION["loggedIn"] = true;
-		}
-
-		return json_encode($obj);
-
-		
+        if (Auth::attempt($user)) {
+           	$obj->success=true;
+           	$obj->message="Uspijesno logiranje";
+        }
+		return json_encode($obj);	
 	}
 
-	public function user() {
-	return View::make('user')->with('name','hare');
+	// Akcija prikazivanje home stranice za logovanog korisinka
+
+	public function home() 
+	{
+	//	
+	
+	//	$u=userGroup::find(2)->User()->first();
+		$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
+		$u=user::find($id)->userGroup()->first()->naziv;
+		return View::make('user')->with('name',$u.' '.Auth::user()->username);
 	}
 
+	//Log out akcija
+
+	public function logout()
+	{
+		    Auth::logout();
+		    return Redirect::to('/');
+	}
 
 
 }
