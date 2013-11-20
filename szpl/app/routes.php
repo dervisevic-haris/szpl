@@ -25,3 +25,10 @@ Route::get('logout',array('as'=>'logout','uses'=>'IdentificationController@logou
 
 //Get-login
 Route::get('login',array('as'=>'login','uses'=>'IdentificationController@getlogin'))->before('guest');
+
+//Get Registration form
+Route::get('registration',array('uses'=>'IdentificationController@getregister'));
+
+
+//Post registration ruta
+Route::post('registration',array('uses'=>'IdentificationController@register'));

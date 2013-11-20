@@ -49,13 +49,60 @@ class IdentificationController extends BaseController {
 		$u=user::find($id)->userGroup()->first()->naziv;
 		return View::make('user')->with('name',$u.' '.Auth::user()->username);
 	}
-
 	//Log out akcija
-
 	public function logout()
 	{
 		    Auth::logout();
 		    return Redirect::to('/');
+	}
+
+	public function getregister () {
+			return View::make('registration');
+	}
+
+	public function register () {
+		$user= new User;
+
+
+
+		$username=$_POST['username'];
+		$password=$_POST['password'];
+		$retypePassword=$_POST['passwordRetyped'];
+		$email=$_POST['email'];
+
+		if($password!=$retypePassword)
+			return View::make('registration')->with('error','Unijeli ste razlicite sifre');
+		
+		$email=User::where('email','=',$_POST['email'])->count();
+		if($email!=0)
+			return View::make('registration')->with('error','Email postoji u bazi');
+
+		$username=User::where('username','=',$_POST['username'])->count();
+		if($username!=0)
+			return View::make('registration')->with('error','Username postoji u bazi');
+
+		$user->username=$_POST['username'];
+		//Moramo napraivi hes od unesene sifre
+		$user->password=Hash::make($_POST['password']);
+
+		$user->email=$_POST['email'];
+
+		$user->adress=$_POST['address'];
+		//date format jedini razumljiv za Sql db
+		$user->created_at=date("Y-m-d H:i:s"); 
+		$user->updated_at=date("Y-m-d H:i:s");  
+		//user_group_id stavljamo na 1 jer pri registraciji dozvoljno je da se registruje samo korisik,a administrator ce mjenjat ovo ukoliko nekom bude dao Administratorske privilegije ili slicno
+		$user->user_group_id=2;
+		//spasit u bazu kreirani model user
+
+		//Dodati u try catch poslije
+		$user->save();
+
+		
+		return View::make('registration')->with('success',true);
+
+
+
 	}
 
 

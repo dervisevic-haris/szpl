@@ -9,41 +9,7 @@
     <meta charset="utf-8">
     <script src="/js/jquery-1.10.2.js"></script>
     <script >
-    	  $( document ).ready(function() {
-  		$("#loginBtn").on("click", function(e){
-			e.preventDefault();
-			var password = $("#inputPassword").val();
-			var email = $("#inputUsername").val();
-			var url = $("#loginForm").attr("action");
-			$.ajax({               //Login preko ajaxa, (experimentisanje da se u slucaju pogresnih unosa ne refresuje cijela stranica)
-				type:"POST",
-				url:url,
-				dataType:"json",
-				data: {
-					name :email,
-					password : password
-				},
-				success: function(data){
-					if (data.success){
-						window.location = data.redirectUrl;
-					}	
-					else{
-						$("#LoginError").show();
-						$("#LoginError").html(data.message);
-
-					}			
-				},
-				complete:function(data){
-					
-				},
-				error:function(data){
-						alert("Desila se greska " + data.message);
-
-				}
-			});
-
-  		});
-    });
+    
     </script>
   </head>
  <style>
@@ -76,7 +42,7 @@
 				 <a class="brand" href="#">Sistem za praćenje letova</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
-							<li ><a href="#" > <i class="icon-home"></i> Pocetna</a></li>
+							<li ><a href="/project/szpl/public/home" > <i class="icon-home"></i> Pocetna</a></li>
 							 <li class="dropdown">
 							 <a class="dropdown-toggle" data-toggle="dropdown" href="#" > <i class="caret"> </i> @yield('mainLink') </a>
 								<ul class="dropdown-menu">
@@ -90,6 +56,7 @@
 							  @else
 							  <li><a href="#registracija" data-toggle="modal">Guest User</a></li>
 							  <li><a href="/project/szpl/public/login" data-toggle="modal">Login</a></li>
+							  <li><a href="/project/szpl/public/registration" data-toggle="modal">Registracija</a></li>
 							  @endif
 						</ul>
 					</div>
