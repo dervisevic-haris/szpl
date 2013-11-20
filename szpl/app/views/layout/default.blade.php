@@ -31,6 +31,8 @@
 	margin-left: 5px;
 }
 
+
+
 </style>
 	<body>
 	<div class="navbar navbar-fixed-top">
