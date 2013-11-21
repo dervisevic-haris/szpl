@@ -3,7 +3,7 @@
 @section('mainContent')
 <style type="text/css">
 .Container {
-    top:250px;
+    top:27%;
     width: 50%;
     position: absolute;
     left:22%;
@@ -62,6 +62,7 @@
     margin-top: 110px;
 }
 </style>
+ <script src="http://code.jquery.com/jquery.js"></script>
 <script>
     $( document ).ready(function() {
         $("#CancelBtn").on("click", function(e){

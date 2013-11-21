@@ -31,8 +31,6 @@
 	margin-left: 5px;
 }
 
-
-
 </style>
 	<body>
 	<div class="navbar navbar-fixed-top">
@@ -109,10 +107,6 @@
 		</div>
 	</div>
 		
-	<div class="navbar navbar-fixed-bottom">
-		<div class="navbar-inner">
-		
-		</div>
 	</div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

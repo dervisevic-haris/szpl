@@ -38,6 +38,7 @@
 }
 
 </style>
+ <script src="http://code.jquery.com/jquery.js"></script>
 <script>
       $( document ).ready(function() {
         $("#loginBtn").on("click", function(e){
