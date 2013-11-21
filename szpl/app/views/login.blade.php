@@ -1,43 +1,8 @@
 @extends('layout.default')
 
 @section('mainContent')
-
-<style type="text/css">
-.Container {
-    top:320px;
-    width: 40%;
-    position: absolute;
-    left:30%;
-    right: 25%;
-    background-image: linear-gradient(315deg, #fefefe, rgba(0,0,30,0.5));
-    border-radius: 20px;
-}
-#inputPassword{
-    display: block;
-    position: relative;
-    margin-right: 20%;
-    margin-left: 25%;
-    width: 300px;
-}
-#inputUsername {
-    display: block;
-    position: relative;
-    margin-right: 20%;
-    margin-left: 25%;
-    width: 300px;
-
-}
-#loginBtn {
-    position: relative;
-   width: 150px;
-   margin-left: 25%;
-
-}
-#linkCA {
-    margin-right: 10%;
-}
-
-</style>
+<style type="text/css"></style>
+<link href="css/login.css" rel="stylesheet">
  <script src="http://code.jquery.com/jquery.js"></script>
 <script>
       $( document ).ready(function() {

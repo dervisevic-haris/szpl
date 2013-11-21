@@ -1,0 +1,59 @@
+.Container {
+    top:27%;
+    width: 50%;
+    position: absolute;
+    left:22%;
+    right: 25%;
+}
+
+#inputUsername {
+    position: relative;
+    width: 300px;
+}
+#inputPassword {
+    display: block;
+      width: 300px;
+}
+#inputEmail {
+    display: block;
+      width: 300px;
+}
+
+#loginBtn {
+    position: absolute;
+    width: 150px;
+}
+#linkCA {
+
+}
+#CancelBtn{
+    position: absolute;
+    width: 150px;
+    left:170px;
+}
+#ControlGroup {
+    position: relative;
+    margin-right: 50px;
+    margin-left: 200px;
+}
+.login-title {
+    position: relative;
+    margin-left: 195px;
+}
+#loginForm {
+    position: relative;
+    top:25px;
+}
+#buttons {
+    position: relative;
+    top:25px;
+}
+#error {
+    position: absolute;
+    top:410px;
+    width: 80%;
+}
+.onsucess {
+    position: relative;
+    margin-top: 110px;
+}

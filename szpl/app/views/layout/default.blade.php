@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>@yield('content')</title>
+    <title> @yield('content') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     <meta charset="utf-8">
-    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
     <script >
     
     </script>
@@ -46,15 +46,15 @@
 							 <li class="dropdown">
 							 <a class="dropdown-toggle" data-toggle="dropdown" href="#" > <i class="caret"> </i> @yield('mainLink') </a>
 								<ul class="dropdown-menu">
-									<li><a href="http://localhost/laravel/public/login/ispisi"> @yield('link1.1') </a></li>
+									<li><a href=""> @yield('link1.1') </a></li>
 									<li><a>@yield('link1.2')</a></li>
 								</ul>
 						  </li>
 						  	  @if (Auth::check())
-							  <li><a href="#registracija" data-toggle="modal">@yield('Poruka')</a></li>
+							  <li><a href="#" data-toggle="modal">@yield('Poruka')</a></li>
 							  <li><a href="/project/szpl/public/logout" class="logoutLink" data-toggle="modal">Logout</a></li>
 							  @else
-							  <li><a href="#registracija" data-toggle="modal">Guest User</a></li>
+							  <li><a href="#" data-toggle="modal">Guest User</a></li>
 							  <li><a href="/project/szpl/public/login" data-toggle="modal">Login</a></li>
 							  <li><a href="/project/szpl/public/registration" data-toggle="modal">Registracija</a></li>
 							  @endif

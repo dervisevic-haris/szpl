@@ -2,10 +2,10 @@
 
 @section('content')
 Dobrodosli
-@stop
+@endsection
 
 @section('Poruka')
 {{ $name }}
-@stop
+@endsection
 
 

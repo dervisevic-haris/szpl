@@ -1,68 +1,8 @@
 @extends('layout.default')
 
 @section('mainContent')
-<style type="text/css">
-.Container {
-    top:27%;
-    width: 50%;
-    position: absolute;
-    left:22%;
-    right: 25%;
-}
-
-#inputUsername {
-    position: relative;
-    width: 300px;
-}
-#inputPassword {
-    display: block;
-      width: 300px;
-}
-#inputEmail {
-    display: block;
-      width: 300px;
-}
-
-#loginBtn {
-    position: absolute;
-    width: 150px;
-}
-#linkCA {
-
-}
-#CancelBtn{
-    position: absolute;
-    width: 150px;
-    left:170px;
-}
-#ControlGroup {
-    position: relative;
-    margin-right: 50px;
-    margin-left: 200px;
-}
-.login-title {
-    position: relative;
-    margin-left: 195px;
-}
-#loginForm {
-    position: relative;
-    top:25px;
-}
-#buttons {
-    position: relative;
-    top:25px;
-}
-#error {
-    position: absolute;
-    top:410px;
-    width: 80%;
-}
-.onsucess {
-    position: relative;
-    margin-top: 110px;
-}
-</style>
- <script src="http://code.jquery.com/jquery.js"></script>
+<link href="css/registration.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery.js"></script>
 <script>
     $( document ).ready(function() {
         $("#CancelBtn").on("click", function(e){
@@ -76,7 +16,7 @@
             <div class="Container">
             <h1 class="login-title">Registration</h1>
             <div class="account-wall" id="ControlGroup">
-                <form class="form-signin" id="loginForm" method="POST" action="/project/szpl/public/registration">
+                <form class="form-signin" id="loginForm" method="POST" action="/registration">
                 <label class="control-label" for="inputUsername" >Username:</label>
                     <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" required>
                 <label class="control-label" for="" >Password:</label> 
@@ -90,7 +30,7 @@
                    <div id="buttons">
                     <button class="btn btn-lg btn-primary" type="submit" id="loginBtn">
                       Submit</button>
-                    <button class="btn btn-danger" type="button" id="CancelBtn" action="/project/szpl/public">
+                    <button class="btn btn-danger" type="button" id="CancelBtn" action="/">
                       Cancel</button> 
                     </div>
                 </form>
