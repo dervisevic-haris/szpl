@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> @yield('content') </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+    <link href="/project/szpl/public/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/project/szpl/public/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     <meta charset="utf-8">
-    <script src="js/jquery-1.10.2.js"></script>
-    <script >
-    
-    </script>
+    <script src="/project/szpl/public/js/jquery-1.10.2.js"></script>
+
+    @yield('links')
+    @yield('someScript')
   </head>
  <style>
+ 
  #LoginError {
  	display: none;
  }
@@ -46,7 +46,7 @@
 							 <li class="dropdown">
 							 <a class="dropdown-toggle" data-toggle="dropdown" href="#" > <i class="caret"> </i> @yield('mainLink') </a>
 								<ul class="dropdown-menu">
-									<li><a href=""> @yield('link1.1') </a></li>
+									<li><a href="/project/szpl/public/home/users"> @yield('link1.1') </a></li>
 									<li><a>@yield('link1.2')</a></li>
 								</ul>
 						  </li>
@@ -108,8 +108,8 @@
 	</div>
 		
 	</div>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+    <script src="http://localhost/project/szpl/public/js/bootstrap.min.js"></script>
   </body>
 </html>
 </html>

@@ -14,6 +14,8 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
-	
-
+	public static function getUserRole($id){
+		$u=user::find($id)->userGroup()->first()->naziv;
+		return $u;
+	}
 }

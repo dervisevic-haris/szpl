@@ -32,3 +32,5 @@ Route::get('registration',array('uses'=>'IdentificationController@getregister'))
 
 //Post registration ruta
 Route::post('registration',array('uses'=>'IdentificationController@register'));
+
+Route::get('home/users',array('uses'=>'AdminController@showUsers'))->before('auth');;

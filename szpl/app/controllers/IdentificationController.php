@@ -1,5 +1,5 @@
 <?php
-
+include('helpers/userHelper.php');
 class IdentificationController extends BaseController {
 
 	/*
@@ -62,9 +62,6 @@ class IdentificationController extends BaseController {
 
 	public function register () {
 		$user= new User;
-
-
-
 		$username=$_POST['username'];
 		$password=$_POST['password'];
 		$retypePassword=$_POST['passwordRetyped'];
@@ -91,14 +88,13 @@ class IdentificationController extends BaseController {
 		//date format jedini razumljiv za Sql db
 		$user->created_at=date("Y-m-d H:i:s"); 
 		$user->updated_at=date("Y-m-d H:i:s");  
-		//user_group_id stavljamo na 1 jer pri registraciji dozvoljno je da se registruje samo korisik,a administrator ce mjenjat ovo ukoliko nekom bude dao Administratorske privilegije ili slicno
-		$user->user_group_id=2;
+		//userRole klasu koristimo iz public foldera kao enumeraciju da ne pisemo 1,2,3 rucno.
+		$user->user_group_id= userRole::Korisnik;
 		//spasit u bazu kreirani model user
 
 		//Dodati u try catch poslije
 		$user->save();
 
-		
 		return View::make('registration')->with('success',true);
 
 
