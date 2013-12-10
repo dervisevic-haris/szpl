@@ -16,7 +16,6 @@
 <script type="text/javascript"> 
 $(document).ready(function() { 
   $("#my-table-sorter").tablesorter(); 
-
 $("#Change").on("click", function(e){
       e.preventDefault();
       var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
@@ -25,8 +24,8 @@ $("#Change").on("click", function(e){
           //uzimamo sve vrijednosti polja iz reda gdje je Id== cekiranom ID-u
           var uid = $(this).find('td').eq(1).text();
           var username = $(this).find('td').eq(2).text();
-          var email =$(this).find('td').eq(3).text();
-          var address=  $(this).find('td').eq(4).text();
+          var email =$(this).find('td').eq(4).text();
+          var address=  $(this).find('td').eq(3).text();
           var role=  $(this).find('td').eq(5).text();
             //proslijedjujemo pokupljene informacije iz tabele u modal za eventualne izmjene
           $('#inputUsername').attr('value',username);
@@ -34,7 +33,7 @@ $("#Change").on("click", function(e){
           $('#inputAddress').attr('value',address);
           $('#inputPassword').attr('placeholder','input new password');
           $('#userRole').val($.trim(role));
-
+          $('#hidden').val(uid);
           $('#myModal').modal('show');
 
         }
@@ -42,27 +41,67 @@ $("#Change").on("click", function(e){
     });
 
   $("#Delete").on('click', function(event) {
+      var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
+      $.ajax({
+        url: '/project/szpl/public/home/users/delete',
+        type: 'POST',
+        dataType: 'json',
+        data: {param1: id},
+      })
+      .done(function(data) {
+         window.location = data.redirectUrl;
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+      
+
+
+    });
+
+  $("#SaveChange").on('click', function(event) {
     event.preventDefault();
-        $.ajax({
-          url: '/path/to/file',
-          type: 'POST',
-          dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-          data: {param1: 'value1'},
-        })
-        .done(function() {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
-        });
-        
-  });
-                
+        var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
+        var username= $('#inputUsername').val();
+        var address=  $('#inputAddress').val();
+        var email= $('#inputEmail').val();
+        var password=$('#inputPassword').val();
+        var userrole= $('#userRole').val();
+  
+       $.ajax({
+        url: '/project/szpl/public/home/users/update',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          uid: id,
+          username: username,
+          email: email,
+          password: password,
+          userrole:userrole,
+          address:address
+        },
+      })
+      .done(function(data) {
+         window.location = data.redirectUrl;
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+
+    
+
+
+    
   });
 
+        
+  });
 </script>
 @endsection
 
@@ -105,6 +144,7 @@ $("#Change").on("click", function(e){
     <h3>Izmjena Korisnika</h3>
   </div>
   <div class="modal-body">
+    <input type="hidden" name="hidden" id="hidden"></input>
     <div class="control-group">
       <label class="control-label" for="inputUsername">Username</label>
     <div class="controls">
@@ -138,7 +178,7 @@ $("#Change").on("click", function(e){
   </div>
   <div class="modal-footer">
     <a href="" class="btn">Close</a>
-    <a href="" class="btn btn-primary">Save changes</a>
+    <a href="" id="SaveChange" class="btn btn-primary">Save changes</a>
   </div>
 </div>
 

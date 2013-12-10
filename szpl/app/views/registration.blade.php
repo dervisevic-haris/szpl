@@ -16,7 +16,7 @@
             <div class="Container">
             <h1 class="login-title">Registration</h1>
             <div class="account-wall" id="ControlGroup">
-                <form class="form-signin" id="loginForm" method="POST" action="/registration">
+                <form class="form-signin" id="loginForm" method="POST" action="/project/szpl/public/registration">
                 <label class="control-label" for="inputUsername" >Username:</label>
                     <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" required>
                 <label class="control-label" for="" >Password:</label> 

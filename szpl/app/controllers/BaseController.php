@@ -18,4 +18,16 @@ class BaseController extends Controller {
 		$u=user::find($id)->userGroup()->first()->naziv;
 		return $u;
 	}
+
+	public static function getUserRoleId($userRoleString)
+	{
+		if($userRoleString=="Administrator")
+			return 1;
+		else if ($userRoleString=="Korisnik")
+			return 2;
+		else if($userRoleString=="Aviokompanija")
+			return 3;
+		else
+			return 0;
+	}
 }

@@ -1,6 +1,7 @@
 @extends('layout.default')
 
-@section('mainContent')
+
+@section('links')
 <style type="text/css"></style>
 <link href="css/login.css" rel="stylesheet">
  <script src="http://code.jquery.com/jquery.js"></script>
@@ -41,6 +42,10 @@
         });
     });
 </script>
+@endsection
+
+@section('mainContent')
+
 <div class="container">
     <div class="row">
         <div class="Container">
