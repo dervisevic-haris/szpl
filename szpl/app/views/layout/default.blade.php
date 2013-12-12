@@ -44,23 +44,20 @@
 					<ul class="nav pull-right">
 						<li ><a href="/project/szpl/public/home" > <i class="icon-home"></i> Pocetna</a></li>
 						 @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Administrator" ) 
-						 <li class="dropdown">
-						 <a class="dropdown-toggle" data-toggle="dropdown" href="" >   <i class="caret"> </i>
-						 	@yield('mainLink') </a>
-						 	@endif
-								<ul class="dropdown-menu">
-									<li><a href="/project/szpl/public/home/users"> @yield('link1.1') </a></li>
-									<li><a href="/project/szpl/public/home/usergroups">@yield('link1.2')</a></li>
-								</ul>
-						  </li>
-						  	  @if (Auth::check())
+							@yield('AdminLinks')
+						 @endif
+						 @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Aviokompanija" )
+							@yield('CompanyLinks')
+						 @endif
+
+						 @if (Auth::check())
 							  <li><a href="#" data-toggle="modal">@yield('Poruka')</a></li>
 							  <li><a href="/project/szpl/public/logout" class="logoutLink" data-toggle="modal">Logout</a></li>
-							  @else
+						 @else
 							  <li><a href="#" data-toggle="modal">Guest User</a></li>
 							  <li><a href="/project/szpl/public/login" data-toggle="modal">Login</a></li>
 							  <li><a href="/project/szpl/public/registration" data-toggle="modal">Registracija</a></li>
-							  @endif
+						 @endif
 						</ul>
 					</div>
 			</div>
@@ -71,6 +68,7 @@
       <div class="hero-unit">
 		<div class="omotaj">
 			  <h1>Dobrodošli</h1>
+			  @yield('Title')
 		</div>	 
       </div>
    

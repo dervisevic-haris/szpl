@@ -17,7 +17,7 @@ class IdentificationController extends BaseController {
 	//Akcija getLogin 
 
 	public function getlogin(){
-		return View::make('login');
+		return View::make('LoginView');
 	}
 
 	//Akcija Login za provjeru podataka poslanih ajaxom
@@ -47,7 +47,14 @@ class IdentificationController extends BaseController {
 	//	$u=userGroup::find(2)->User()->first();
 		$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 		$u=user::find($id)->userGroup()->first()->naziv;
-		return View::make('user')->with('name',$u.' '.Auth::user()->username);
+
+		if($u == "Administrator")
+			return View::make('user')->with('name',$u.' '.Auth::user()->username);
+		else if($u == "Aviokompanija")
+			return View::make('CompanyView')->with('name',$u.' '.Auth::user()->username);
+		else 
+			return View::make('user')->with('name',$u.' '.Auth::user()->username);
+
 	}
 	//Log out akcija
 	public function logout()
