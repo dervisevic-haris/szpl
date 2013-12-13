@@ -52,7 +52,20 @@ class IdentificationController extends BaseController {
 			return View::make('user')->with('name',$u.' '.Auth::user()->username);
 		else if($u == "Aviokompanija")
 		{
-			return View::make('CompanyView')->with('name',$u.' '.Auth::user()->username);
+			$idKompanije = Auth::user()->Company_id;
+			$prviput=false;
+			if(!is_null($idKompanije))
+			{
+			$kompanija = Company::find($idKompanije);
+			if (is_null($kompanija->email) || is_null($kompanija->address) || is_null($kompanija->city))
+			{
+				$prviput=true;
+				return View::make('CompanyView')->with(array('name'=> $u.' '.Auth::user()->username,'prviput'=>$prviput,'CompanyId'=>$idKompanije));
+			}
+			}
+			else
+			return View::make('CompanyView')->with(array('name'=> $u.' '.Auth::user()->username,'prviput'=>$prviput));
+
 		}
 		else 
 			return View::make('user')->with('name',$u.' '.Auth::user()->username);

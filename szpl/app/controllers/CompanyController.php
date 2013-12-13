@@ -47,6 +47,29 @@ class CompanyController extends BaseController {
 			return View::make('CreateFlightView')->with('name',$u.' '.Auth::user()->username);
 		}
 
+			public function update()
+		{
+			
+			$obj = new stdClass;
+			$obj->success = false;
+			$obj->message = "Uspijesno ste azurirali informacije o kompaniji";
+
+			$idKompanije = $_POST['cid'];
+			//Iz baze pronalazimo kompaniju sa ovim id-om
+			$kompanija = Company::find($_POST['cid'])->first();
+			//postavljamo atribute $komapnije na one poslane ajax post zahtjevom
+			$kompanija->email =$_POST['email'];
+			$kompanija->address =$_POST['address'];
+			$kompanija->city = $_POST['city'];
+			$kompanija->country=$_POST['country'];
+			$kompanija->name = $_POST['CompanyName'];
+			//$kompanija->save();
+
+			return json_encode($obj);
+
+		}
+
+
 
 }
 ?>

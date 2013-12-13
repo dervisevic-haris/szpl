@@ -57,3 +57,6 @@ Route::get('home/airplanes/create',array('uses'=>'CompanyController@getCreateAir
 Route::get('home/airplanes/delete',array('uses'=>'CompanyController@getDeleteAirplane'))->before('auth');
 
 Route::get('home/airplanes/update',array('uses'=>'CompanyController@getUpdateAirplane'))->before('auth');
+
+//Rutira ajax post zahtjev sa CompanyView-a Nakon sto je korisnik unio sve podatke o kompaniji za koju radi
+Route::post('home/company/update',array('uses'=>'CompanyController@update'));

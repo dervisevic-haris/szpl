@@ -107,7 +107,8 @@ $(document).ready(function() {
           password: password,
           userrole:userrole,
           address:address,
-          company:CompanyName
+          company:CompanyName,
+          chosedCompany:ChosedCompany
         },
       })
       .done(function(data) {

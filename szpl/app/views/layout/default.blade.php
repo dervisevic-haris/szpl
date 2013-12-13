@@ -73,9 +73,6 @@
       </div>
    
 @yield('mainContent')
-
-
-	
 	<div id="login" class="modal hide fade">
 		<div class="modal-header">
 			<h2>Login</h2>
