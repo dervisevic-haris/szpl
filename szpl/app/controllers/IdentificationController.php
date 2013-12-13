@@ -51,7 +51,9 @@ class IdentificationController extends BaseController {
 		if($u == "Administrator")
 			return View::make('user')->with('name',$u.' '.Auth::user()->username);
 		else if($u == "Aviokompanija")
+		{
 			return View::make('CompanyView')->with('name',$u.' '.Auth::user()->username);
+		}
 		else 
 			return View::make('user')->with('name',$u.' '.Auth::user()->username);
 

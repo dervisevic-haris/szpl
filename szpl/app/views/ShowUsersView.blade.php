@@ -16,7 +16,10 @@
 <script type="text/javascript"> 
 $(document).ready(function() { 
   $("#my-table-sorter").tablesorter(); 
-$("#Change").on("click", function(e){
+
+
+
+  $("#Change").on("click", function(e){
       e.preventDefault();
       var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
       $('#my-table-sorter tr').each(function(){
@@ -34,10 +37,19 @@ $("#Change").on("click", function(e){
           $('#inputPassword').attr('placeholder','input new password');
           $('#userRole').val($.trim(role));
           $('#hidden').val(uid);
+
+          if($('#userRole').val()=="Aviokompanija")
+           $('.Company').show();
+               else
+              $('.Company').hide();
+
+          $('#ChosedCompany').hide();
+
           $('#myModal').modal('show');
 
         }
     });
+
     });
 
   $("#Delete").on('click', function(event) {
@@ -46,7 +58,7 @@ $("#Change").on("click", function(e){
         url: '/project/szpl/public/home/users/delete',
         type: 'POST',
         dataType: 'json',
-        data: {param1: id},
+        data: {uid: id},
       })
       .done(function(data) {
          window.location = data.redirectUrl;
@@ -61,6 +73,12 @@ $("#Change").on("click", function(e){
 
 
     });
+  $("#ChoseCompany").on('click', function(event) {
+    event.preventDefault();
+    $('#ChoseCompany').hide();
+    $('#ChosedCompany').show();
+
+  });
 
   $("#SaveChange").on('click', function(event) {
     event.preventDefault();
@@ -70,7 +88,14 @@ $("#Change").on("click", function(e){
         var email= $('#inputEmail').val();
         var password=$('#inputPassword').val();
         var userrole= $('#userRole').val();
-  
+
+        var CompanyName = $('#inputCompany').val();
+        var ChosedCompany = $('#ChosedCompany').val();
+
+        if(CompanyName!="" && ChosedCompany!="")
+          alert('Nova kompanija ili vec Postojeca?');
+        else
+        {
        $.ajax({
         url: '/project/szpl/public/home/users/update',
         type: 'POST',
@@ -81,7 +106,8 @@ $("#Change").on("click", function(e){
           email: email,
           password: password,
           userrole:userrole,
-          address:address
+          address:address,
+          company:CompanyName
         },
       })
       .done(function(data) {
@@ -93,12 +119,19 @@ $("#Change").on("click", function(e){
       .always(function() {
         console.log("complete");
       });
-
-    
-
-
-    
+    }
   });
+    
+
+  
+  $( "#userRole" ).change(function() {
+    if($('#userRole').val()=="Aviokompanija")
+      $('.Company').show();
+    else
+      $('.Company').hide();
+
+   
+});
 
         
   });
@@ -169,18 +202,31 @@ $("#Change").on("click", function(e){
       <input type="password" id="inputPassword" placeholder="Password">
     </div>
   </div>
-   <label class="control-label" for="inputUsername">User Role</label>
+   <label class="control-label" for="inputUsername">User role</label>
 <select id="userRole">
   <option >Administrator</option>
   <option >Korisnik</option>
   <option >Aviokompanija</option>
 </select>
+<div class="Company">
+ <label class="control-label" for="inputCompany">Company name</label>
+    <div class="controls">
+      <input type="text" id="inputCompany" placeholder="New Company">
+      <br>
+      <a href="" id="ChoseCompany" class="btn btn-primary">Izaberite vec postojecu</a>
+    </div>
+    <div id="CompanyList">
+  <select id="ChosedCompany">
+      <option class="op1"></option>
+      <option class="op2">Ura</option>
+  </select>
   </div>
+</div>
   <div class="modal-footer">
     <a href="" class="btn">Close</a>
     <a href="" id="SaveChange" class="btn btn-primary">Save changes</a>
   </div>
-</div>
+
 
 
 @endsection
