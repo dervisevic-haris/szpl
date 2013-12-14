@@ -33,6 +33,8 @@ class AdminController extends BaseController {
 		//Parametar koji ce biti !="" ukoliko je korisnik izabrao vec neku postojecu kompaniju i dodjelio korisnika njoj
 		$chosedCompany = $_POST['chosedCompany'];
 		//Parametar koji ce sadrzavati ID kompanije koju je korisnik izabrao iz liste vec postojecih kompanija
+		
+		if(isset($_POST['cid']))
 		$companyId=$_POST['cid'];
 
 		$userrole=BaseController::getUserRoleId($_POST['userrole']);
@@ -75,7 +77,7 @@ class AdminController extends BaseController {
 		if($company!="")
 		$user->Company_id=$k->id;
 
-		if($companyId!="")
+		if(isset($companyId) && $companyId!="")
 		$user->Company_id=intval(Company::find($companyId)->id);
 
 
