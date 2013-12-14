@@ -63,10 +63,17 @@ class CompanyController extends BaseController {
 			$kompanija->city = $_POST['city'];
 			$kompanija->country=$_POST['country'];
 			$kompanija->name = $_POST['CompanyName'];
-			//$kompanija->save();
+			$kompanija->save();
 
 			return json_encode($obj);
 
+		}
+
+		public function getCompanys(){
+			 $kompanije = Company::all();
+			 return $kompanije->toJson();
+
+			
 		}
 
 

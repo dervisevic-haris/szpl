@@ -68,14 +68,18 @@ $(document).ready(function() {
 	 <button class="btn btn-primary" id="InputData" type="button">Unesite Podatke</button>
 </div>
 @endif
-<div class="alert alert-info .alert-dismis" id="InfoPanel">Uspijesno ste popunili informacije o kompaniji</div>
+<div class="alert alert-info .alert-dismis" id="InfoPanel">Uspijesno ste popunili informacije o kompaniji
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
 <div id="myModal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3>Informacije o kompaniji</h3>
   </div>
   <div class="modal-body">
-    <input type="hidden" name="hidden" id="hidden" value='<?php echo $CompanyId ?>'></input>
+    <input type="hidden" name="hidden" id="hidden" value='<?php 
+    if(isset($CompanyId))
+      echo $CompanyId ?>'></input>
     <div class="control-group">
       <label class="control-label" for="inputName">Naziv Kompanije</label>
     <div class="controls">

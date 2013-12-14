@@ -60,3 +60,5 @@ Route::get('home/airplanes/update',array('uses'=>'CompanyController@getUpdateAir
 
 //Rutira ajax post zahtjev sa CompanyView-a Nakon sto je korisnik unio sve podatke o kompaniji za koju radi
 Route::post('home/company/update',array('uses'=>'CompanyController@update'));
+
+Route::get('home/company/read',array('uses'=>'CompanyController@getCompanys'));

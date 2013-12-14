@@ -46,12 +46,15 @@ class IdentificationController extends BaseController {
 	
 	//	$u=userGroup::find(2)->User()->first();
 		$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
-		$u=user::find($id)->userGroup()->first()->naziv;
+		$u=User::find($id)->userGroup()->first()->naziv;
 
 		if($u == "Administrator")
 			return View::make('user')->with('name',$u.' '.Auth::user()->username);
 		else if($u == "Aviokompanija")
 		{
+			//$ImeKompanije = Company::find(1)->User()->first()->created_at;
+			$ImeKompanije = Auth::user()->Company()->first()->name;
+
 			$idKompanije = Auth::user()->Company_id;
 			$prviput=false;
 			if(!is_null($idKompanije))
@@ -60,11 +63,11 @@ class IdentificationController extends BaseController {
 			if (is_null($kompanija->email) || is_null($kompanija->address) || is_null($kompanija->city))
 			{
 				$prviput=true;
-				return View::make('CompanyView')->with(array('name'=> $u.' '.Auth::user()->username,'prviput'=>$prviput,'CompanyId'=>$idKompanije));
+				return View::make('CompanyView')->with(array('name'=> $u.' '.$ImeKompanije,'prviput'=>$prviput,'CompanyId'=>$idKompanije));
 			}
 			}
-			else
-			return View::make('CompanyView')->with(array('name'=> $u.' '.Auth::user()->username,'prviput'=>$prviput));
+			$ImeKompanije = Auth::user()->Company()->first()->name;
+			return View::make('CompanyView')->with(array('name'=> $u.' '.$ImeKompanije,'prviput'=>$prviput));
 
 		}
 		else 

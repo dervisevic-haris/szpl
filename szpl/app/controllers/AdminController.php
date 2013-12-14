@@ -30,6 +30,10 @@ class AdminController extends BaseController {
 		$address = $_POST['address'];
 		//Parametar koji ce biti !="" ukoliko je neko unio novo ime Kompanije za koju predstavnik aviokompanije treba da radi
 		$company=$_POST['company'];
+		//Parametar koji ce biti !="" ukoliko je korisnik izabrao vec neku postojecu kompaniju i dodjelio korisnika njoj
+		$chosedCompany = $_POST['chosedCompany'];
+		//Parametar koji ce sadrzavati ID kompanije koju je korisnik izabrao iz liste vec postojecih kompanija
+		$companyId=$_POST['cid'];
 
 		$userrole=BaseController::getUserRoleId($_POST['userrole']);
 
@@ -43,6 +47,8 @@ class AdminController extends BaseController {
 			$k->updated_at=date("Y-m-d H:i:s");
 			$k->save();
 		}
+		
+
 		//Dummy class objekat koji cemo vratiti kao json,u sebi sadrzi da parametre poruke(da li je uspijesno modifikacija) i url na koji se vrsi redirect
 		$obj = new stdClass;
 		$obj->message="uspijesno modifikacija";
@@ -68,6 +74,11 @@ class AdminController extends BaseController {
 		$user->updated_at=date("Y-m-d H:i:s");
 		if($company!="")
 		$user->Company_id=$k->id;
+
+		if($companyId!="")
+		$user->Company_id=intval(Company::find($companyId)->id);
+
+
 		$user->save();
 
 		return json_encode($obj);

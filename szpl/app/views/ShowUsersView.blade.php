@@ -30,6 +30,7 @@ $(document).ready(function() {
           var email =$(this).find('td').eq(4).text();
           var address=  $(this).find('td').eq(3).text();
           var role=  $(this).find('td').eq(5).text();
+
             //proslijedjujemo pokupljene informacije iz tabele u modal za eventualne izmjene
           $('#inputUsername').attr('value',username);
           $('#inputEmail').attr('value',email);
@@ -37,6 +38,7 @@ $(document).ready(function() {
           $('#inputPassword').attr('placeholder','input new password');
           $('#userRole').val($.trim(role));
           $('#hidden').val(uid);
+
 
           if($('#userRole').val()=="Aviokompanija")
            $('.Company').show();
@@ -75,22 +77,55 @@ $(document).ready(function() {
     });
   $("#ChoseCompany").on('click', function(event) {
     event.preventDefault();
+
+    $.ajax({
+        url: '/project/szpl/public/home/company/read',
+        type: 'GET',
+        dataType: 'json'
+      })
+      .done(function(data) {
+           $('#ChosedCompany').append(new Option("",""));
+          for(var i=0; i<data.length; i++)
+              {
+                $('#ChosedCompany').append(new Option(data[i].name,data[i].id));
+              }
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+
     $('#ChoseCompany').hide();
     $('#ChosedCompany').show();
+
 
   });
 
   $("#SaveChange").on('click', function(event) {
     event.preventDefault();
+
+       
+
+
         var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
         var username= $('#inputUsername').val();
         var address=  $('#inputAddress').val();
         var email= $('#inputEmail').val();
         var password=$('#inputPassword').val();
         var userrole= $('#userRole').val();
-
         var CompanyName = $('#inputCompany').val();
         var ChosedCompany = $('#ChosedCompany').val();
+
+        //Uzimamo ID kompanije koja je selektovana. 
+        var CompanyId = $('#ChosedCompany').find(":selected").val();
+
+        var isVisible = $('#ChosedCompany').is(':visible');
+        if(isVisible==false)
+            ChosedCompany="";
+
+        
 
         if(CompanyName!="" && ChosedCompany!="")
           alert('Nova kompanija ili vec Postojeca?');
@@ -108,7 +143,8 @@ $(document).ready(function() {
           userrole:userrole,
           address:address,
           company:CompanyName,
-          chosedCompany:ChosedCompany
+          chosedCompany:ChosedCompany,
+          cid:CompanyId
         },
       })
       .done(function(data) {
@@ -130,6 +166,7 @@ $(document).ready(function() {
       $('.Company').show();
     else
       $('.Company').hide();
+
 
    
 });
@@ -218,8 +255,6 @@ $(document).ready(function() {
     </div>
     <div id="CompanyList">
   <select id="ChosedCompany">
-      <option class="op1"></option>
-      <option class="op2">Ura</option>
   </select>
   </div>
 </div>
