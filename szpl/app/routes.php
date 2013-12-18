@@ -62,3 +62,12 @@ Route::get('home/airplanes/update',array('uses'=>'CompanyController@getUpdateAir
 Route::post('home/company/update',array('uses'=>'CompanyController@update'));
 
 Route::get('home/company/read',array('uses'=>'CompanyController@getCompanys'));
+
+
+Route::post('/home/airplanes/create',array('uses'=>'AirplaneController@createAirplane'));
+
+Route::post('/home/flights/create',array('uses'=>'FlightController@createFlight'));
+
+Route::get('home/flightreservation',array('uses'=>'FlightController@getFlightReservation'));
+
+Route::post('/home/flightreservation/search',array('uses'=>'FlightController@searchFlights'));

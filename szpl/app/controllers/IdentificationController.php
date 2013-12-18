@@ -71,12 +71,13 @@ class IdentificationController extends BaseController {
 
 		}
 		else 
-			return View::make('user')->with('name',$u.' '.Auth::user()->username);
+			return View::make('UserOrGuestView')->with('name',$u.' '.Auth::user()->username);
 
 	}
 	//Log out akcija
 	public function logout()
 	{
+
 		    Auth::logout();
 		    return Redirect::to('/');
 	}

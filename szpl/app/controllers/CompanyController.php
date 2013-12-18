@@ -5,46 +5,48 @@ class CompanyController extends BaseController {
 
 		public function airplanes()
 		{
-			$u=userGroup::find(2)->User()->first();
+			$ImeKompanije = Auth::user()->Company()->first()->name;
 			$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 			$u=user::find($id)->userGroup()->first()->naziv;
-			return View::make('AirplaneView')->with('name',$u.' '.Auth::user()->username);
+			return View::make('AirplaneView')->with('name',$u.' '.$ImeKompanije);
 		}
 
 		public function flights()
 		{
-			$u=userGroup::find(2)->User()->first();
+			$ImeKompanije = Auth::user()->Company()->first()->name;
 			$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 			$u=user::find($id)->userGroup()->first()->naziv;
-			return View::make('FlightView')->with('name',$u.' '.Auth::user()->username);
+			return View::make('FlightView')->with('name',$u.' '.$ImeKompanije);
 		}
 		public function getCreateAirplane()
 		{
-			$u=userGroup::find(2)->User()->first();
+			$ImeKompanije = Auth::user()->Company()->first()->name;
 			$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 			$u=user::find($id)->userGroup()->first()->naziv;
-			return View::make('CreateAirplaneView')->with('name',$u.' '.Auth::user()->username);
+			return View::make('CreateAirplaneView')->with('name',$u.' '.$ImeKompanije);
 		}
 		public function getDeleteAirplane()
 		{
-			$u=userGroup::find(2)->User()->first();
+			$ImeKompanije = Auth::user()->Company()->first()->name;
 			$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 			$u=user::find($id)->userGroup()->first()->naziv;
-			return View::make('DeleteAirplaneView')->with('name',$u.' '.Auth::user()->username);
+			return View::make('DeleteAirplaneView')->with('name',$u.' '.$ImeKompanije);
 		}
 		public function getUpdateAirplane()
 		{
-			$u=userGroup::find(2)->User()->first();
+			$ImeKompanije = Auth::user()->Company()->first()->name;
 			$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 			$u=user::find($id)->userGroup()->first()->naziv;
-			return View::make('UpdateAirplaneView')->with('name',$u.' '.Auth::user()->username);
+			return View::make('UpdateAirplaneView')->with('name',$u.' '.$ImeKompanije);
 		}
 		public function getCreateFlight()
 		{
-			$u=userGroup::find(2)->User()->first();
+			$ImeKompanije = Auth::user()->Company()->first()->name;
 			$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
 			$u=user::find($id)->userGroup()->first()->naziv;
-			return View::make('CreateFlightView')->with('name',$u.' '.Auth::user()->username);
+			$avioni=Airplane::where('company_id','=',Auth::user()->Company_id)->get();
+			return View::make('CreateFlightView')->with(array('name'=> $u.' '.$ImeKompanije,'avioni'=>$avioni));
+			
 		}
 
 			public function update()

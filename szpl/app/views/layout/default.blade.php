@@ -10,8 +10,7 @@
 
     @yield('links')
     @yield('someScript')
-  </head>
- <style>
+     <style>
  
  #LoginError {
  	display: none;
@@ -32,6 +31,8 @@
 }
 
 </style>
+  </head>
+
 	<body>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -48,6 +49,9 @@
 						 @endif
 						 @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Aviokompanija" )
 							@yield('CompanyLinks')
+						 @endif
+						  @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Korisnik" )
+							@yield('UserOrGuestLinks')
 						 @endif
 
 						 @if (Auth::check())

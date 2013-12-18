@@ -106,9 +106,6 @@ $(document).ready(function() {
   $("#SaveChange").on('click', function(event) {
     event.preventDefault();
 
-       
-
-
         var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
         var username= $('#inputUsername').val();
         var address=  $('#inputAddress').val();
