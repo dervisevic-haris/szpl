@@ -12,7 +12,7 @@
 		Podesavanja
 	</a>
 		<ul class="dropdown-menu">
-			<li><a href="/project/szpl/public/home/airplanes"> Avioni </a></li>
+			<li><a href="/project/szpl/public/home/airplanes">Avioni </a></li>
 			<li><a href="/project/szpl/public/home/flights">Letovi</a></li>
 		</ul>
 </li>

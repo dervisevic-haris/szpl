@@ -13,7 +13,11 @@ About
 @endsection
 
 @section('Poruka')
-{{ $name }}
+@if(isset($name))
+{{
+	$name
+}}
+@endif
 @endsection
 
 @section('UserOrGuestLinks')

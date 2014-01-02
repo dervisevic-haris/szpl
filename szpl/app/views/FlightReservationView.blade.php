@@ -67,7 +67,7 @@ left:33%;
                             <label class="control-label" for="DepartureDate">Unesite datum polaska:</label>
                             <div class="controls">
                                      <div id="datetimepicker1" class="input-append date">
-                                          <input  data-format="yyyy/MM/dd" type="text" id="datepicker" name = "dateDeparture"></input>
+                                          <input  data-format="yyyy-MM-dd" type="text" id="datepicker" name = "dateDeparture"></input>
                                               <span class="add-on">
                                                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                                               </span>

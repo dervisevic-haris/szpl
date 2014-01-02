@@ -16,6 +16,8 @@ Pregled svih korisnika
 Korisnicke grupe
 @endsection
 
+
+
 @section('Poruka')
 {{ $name }}
 @endsection
@@ -26,8 +28,8 @@ Korisnicke grupe
 							 	Podesavanja
 							 </a>
 									<ul class="dropdown-menu">
-										<li><a href="/project/szpl/public/home/users"> @yield('link1.1') </a></li>
-										<li><a href="/project/szpl/public/home/usergroups">@yield('link1.2')</a></li>
+										<li><a href="/project/szpl/public/home/users/showusers"> @yield('link1.1') </a></li>
+										<li><a href="/project/szpl/public/home/users/usergroups">@yield('link1.2')</a></li>
 									</ul>
 						  </li>
 @endsection

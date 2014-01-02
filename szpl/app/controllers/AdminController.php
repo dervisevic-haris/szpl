@@ -1,15 +1,24 @@
 <?php 
-include('helpers/userHelper.php');
 
 class AdminController extends BaseController {
 
-	public function showUsers()
+
+	//Filteri za AdminControler,tj filteri za home/users rute
+	 public function __construct()
+    {
+    	$this->beforeFilter('auth');
+    	//Svim rutama /home/users/... moze pristupati samo admin tako da je potrebno onemoguciti kako guesta tako i logovanog koristnika koji nije adminisitrator
+        $this->beforeFilter('admin');
+    }
+    //Metoda koja ce se izvrsiti kada bude upucen GET http zahtjev na rutu /home/users/showusers
+	public function getShowusers()
 	{
-		$users=User::all();
+		$users=User::paginate(10);
 		return View::make('ShowUsersView')->with(array('name'=>BaseController::getUserRole(Auth::user()->id).' '.Auth::user()->username,
 			'users'=>$users));
 	}
-	public function deleteUser()
+	//... Post zahtjev na rutu /home/users/delete
+	public function postDelete()
 	{
 		//Putem ajaxa se kupi User ID korisnika kojeg treba brisati,pronadje se dati korisnik i brise
 		$uid=$_POST['uid'];
@@ -17,11 +26,12 @@ class AdminController extends BaseController {
 		$user->delete();
 		//Vracanje dummy class objekta sa 1 atributom URLom na koji treba vrsiti redirect
 		$obj = new stdClass;
-		$obj->redirectUrl ="/project/szpl/public/home/users";
+		$obj->redirectUrl ="/project/szpl/public/home/users/showusers";
 
 		return json_encode($obj);
 	}
-	public function updateUser()
+	//... /home/users/delete
+	public function postUpdate()
 	{
 		//Parametri poslani putem Ajaxa sa ShowUsersView-a 
 		$uid=$_POST['uid'];
@@ -54,7 +64,7 @@ class AdminController extends BaseController {
 		//Dummy class objekat koji cemo vratiti kao json,u sebi sadrzi da parametre poruke(da li je uspijesno modifikacija) i url na koji se vrsi redirect
 		$obj = new stdClass;
 		$obj->message="uspijesno modifikacija";
-		$obj->redirectUrl="/project/szpl/public/home/users";
+		$obj->redirectUrl="/project/szpl/public/home/users/showusers";
 
 
 		$user=User::find($uid);
@@ -85,7 +95,7 @@ class AdminController extends BaseController {
 
 		return json_encode($obj);
 	}
-	public function usergroups(){
+	public function getUsergroups(){
 		//Iz baze pokupive sve usergrupe i posalji ih na View ShowUserGroupView koji ce ih prikazat
 		$usergrup=userGroup::all();
 		return View::make('ShowUserGroupView')->with(array('name'=>BaseController::getUserRole(Auth::user()->id).' '.Auth::user()->username,
@@ -95,7 +105,7 @@ class AdminController extends BaseController {
 
 		$obj = new stdClass;
 		$obj->message="uspijesno modifikacija";
-		$obj->redirectUrl="/project/szpl/public/home/usergroups";
+		$obj->redirectUrl="/project/szpl/public/home/users/usergroups";
 		
 		$id= $_POST['uid'];
 		$naziv = $_POST['name'];

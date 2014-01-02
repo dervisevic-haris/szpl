@@ -39,6 +39,14 @@ Route::filter('auth', function()
 
 });
 
+Route::filter('admin', function()
+{
+	if (BaseController::getUserRole(Auth::user()->id)!="Administrator") 
+		App::abort(403, 'Pristup nije dozvoljen!!.');
+		
+
+});
+
 
 Route::filter('auth.basic', function()
 {

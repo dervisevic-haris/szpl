@@ -7,7 +7,6 @@
     <link href="/project/szpl/public/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
     <meta charset="utf-8">
     <script src="/project/szpl/public/js/jquery-1.10.2.js"></script>
-
     @yield('links')
     @yield('someScript')
      <style>
@@ -18,7 +17,7 @@
 .omotaj {
     display:inline-block;
     width:400px
-    resize:none;
+    
 }
 .control-group .controls #btn {
 	margin-left:75px;
@@ -32,7 +31,6 @@
 
 </style>
   </head>
-
 	<body>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -50,7 +48,7 @@
 						 @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Aviokompanija" )
 							@yield('CompanyLinks')
 						 @endif
-						  @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Korisnik" )
+						  @if (Auth::check() && BaseController::getUserRole(Auth::user()->id)=="Korisnik" ||Auth::guest() )
 							@yield('UserOrGuestLinks')
 						 @endif
 
@@ -58,7 +56,7 @@
 							  <li><a href="#" data-toggle="modal">@yield('Poruka')</a></li>
 							  <li><a href="/project/szpl/public/logout" class="logoutLink" data-toggle="modal">Logout</a></li>
 						 @else
-							  <li><a href="#" data-toggle="modal">Guest User</a></li>
+							  <li><a href="/project/szpl/public/guest" data-toggle="modal">Guest User</a></li>
 							  <li><a href="/project/szpl/public/login" data-toggle="modal">Login</a></li>
 							  <li><a href="/project/szpl/public/registration" data-toggle="modal">Registracija</a></li>
 						 @endif
@@ -109,9 +107,7 @@
 		</div>
 	</div>
 		
-	</div>
-
-    <script src="http://localhost/project/szpl/public/js/bootstrap.min.js"></script>
+	
+    <script src="/project/szpl/public/js/bootstrap.min.js"></script>
   </body>
-</html>
 </html>

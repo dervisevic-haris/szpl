@@ -1,5 +1,5 @@
 <?php
-include('helpers/userHelper.php');
+
 class IdentificationController extends BaseController {
 
 	/*
@@ -41,8 +41,7 @@ class IdentificationController extends BaseController {
 	// Akcija prikazivanje home stranice za logovanog korisinka
 
 	public function home() 
-	{
-	//	
+	{	
 	
 	//	$u=userGroup::find(2)->User()->first();
 		$id=Auth::user()->id; //Uzimamo id trenutno logovanog korisnika
@@ -60,7 +59,7 @@ class IdentificationController extends BaseController {
 			if(!is_null($idKompanije))
 			{
 			$kompanija = Company::find($idKompanije);
-			if (is_null($kompanija->email) || is_null($kompanija->address) || is_null($kompanija->city))
+			if(is_null($kompanija->email) || is_null($kompanija->address) || is_null($kompanija->city))
 			{
 				$prviput=true;
 				return View::make('CompanyView')->with(array('name'=> $u.' '.$ImeKompanije,'prviput'=>$prviput,'CompanyId'=>$idKompanije));
@@ -77,7 +76,6 @@ class IdentificationController extends BaseController {
 	//Log out akcija
 	public function logout()
 	{
-
 		    Auth::logout();
 		    return Redirect::to('/');
 	}

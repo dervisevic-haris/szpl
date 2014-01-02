@@ -1,10 +1,7 @@
 @extends('layout.default')
-
-
 @section('links')
 <style type="text/css"></style>
 <link href="css/login.css" rel="stylesheet">
- <script src="http://code.jquery.com/jquery.js"></script>
 <script>
       $( document ).ready(function() {
         $("#loginBtn").on("click", function(e){

@@ -22,7 +22,8 @@ $(document).ready(function() {
         var city=$('#inputCity').val();
         var country= $('#inputCountry').val();
         var id=$('#hidden').val();
-
+        var telefon = $ ('#inputTelephone').val();
+        
         
         $.ajax({
         url: '/project/szpl/public/home/company/update',
@@ -34,7 +35,8 @@ $(document).ready(function() {
           email: email,
           city: city,
           country:country,
-          address:address
+          address:address,
+          Telephone:telefon
         },
       })
       .done(function(data) {
@@ -108,6 +110,12 @@ $(document).ready(function() {
     <label class="control-label" for="inputCountry">Country</label>
     <div class="controls">
       <input type="text" id="inputCountry" placeholder="Country">
+    </div>
+  </div>
+   <div class="control-group">
+    <label class="control-label" for="inputTelephone">Kontakt Telefon:</label>
+    <div class="controls">
+      <input type="text" id="inputTelephone" placeholder="Tel">
     </div>
   </div>
   </div>

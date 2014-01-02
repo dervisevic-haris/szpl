@@ -201,6 +201,7 @@ $(document).ready(function() {
     <?php }?>
   </tbody> 
 </table>
+<?php echo $users->links(); ?>
 <div class="Buttons">
   <input type="button" id="Change" class="btn" name="Change" value="Izmjeni Podatke"></input>
   <input type="button" id="Delete" class="btn" name="Change" value="Izbrisi Korisika"></input>

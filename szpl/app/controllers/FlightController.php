@@ -37,7 +37,6 @@ class FlightController extends BaseController {
 		->where('departure','=',$_POST['inputFrom'])
 		->where('arrival','=',$_POST['inputTo'])
 		->get();
-
 		return $sviLetovi;
 	}
 }

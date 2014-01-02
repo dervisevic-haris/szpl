@@ -46,7 +46,6 @@ class CompanyController extends BaseController {
 			$u=user::find($id)->userGroup()->first()->naziv;
 			$avioni=Airplane::where('company_id','=',Auth::user()->Company_id)->get();
 			return View::make('CreateFlightView')->with(array('name'=> $u.' '.$ImeKompanije,'avioni'=>$avioni));
-			
 		}
 
 			public function update()
@@ -58,13 +57,22 @@ class CompanyController extends BaseController {
 
 			$idKompanije = $_POST['cid'];
 			//Iz baze pronalazimo kompaniju sa ovim id-om
-			$kompanija = Company::find($_POST['cid'])->first();
+			$kompanija = Company::find($_POST['cid']);
 			//postavljamo atribute $komapnije na one poslane ajax post zahtjevom
+			if(isset($_POST['email']) && !empty($_POST['email']))
 			$kompanija->email =$_POST['email'];
+			if(isset($_POST['address']) && !empty($_POST['address']))
 			$kompanija->address =$_POST['address'];
+			if(isset($_POST['city']) && !empty($_POST['city']))
 			$kompanija->city = $_POST['city'];
+			if(isset($_POST['country']) && !empty($_POST['country']))
 			$kompanija->country=$_POST['country'];
+			if(isset($_POST['CompanyName']) && !empty($_POST['CompanyName']))
 			$kompanija->name = $_POST['CompanyName'];
+			if(isset($_POST['Telephone']) && !empty($_POST['Telephone']))
+			$kompanija->phone_number = $_POST['Telephone'];
+
+
 			$kompanija->save();
 
 			return json_encode($obj);

@@ -54,7 +54,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsTo('userGroup');
 	}
 	public function Company() {
-	 	
+	 	//Explicitno naznacavamo da je Tabela user povezana sa Tabelom Company preko Company_id foreign key-a
 		return $this->belongsTo('Company','Company_id');
 	}	
 }

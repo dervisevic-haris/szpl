@@ -31,8 +31,6 @@
       pickTime: false
     });
   });
-
-
  $("#createFlight").on("click", function(e){
     e.preventDefault();
     var nazivLeta= $('#inputName').val();

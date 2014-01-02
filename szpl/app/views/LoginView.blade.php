@@ -1,10 +1,6 @@
 @extends('layout.default')
-
-
 @section('links')
-<style type="text/css"></style>
 <link href="css/login.css" rel="stylesheet">
- <script src="http://code.jquery.com/jquery.js"></script>
 <script>
       $( document ).ready(function() {
         $("#loginBtn").on("click", function(e){
@@ -12,6 +8,7 @@
             var password = $("#inputPassword").val();
             var email = $("#inputUsername").val();
             var url = $("#loginForm").attr("action");
+
             $.ajax({               //Login preko ajaxa, (experimentisanje da se u slucaju pogresnih unosa ne refresuje cijela stranica)
                 type:"POST",
                 url:url,
