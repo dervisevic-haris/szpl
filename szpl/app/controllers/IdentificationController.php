@@ -1,5 +1,5 @@
 <?php
-
+include('helpers/userHelper.php');
 class IdentificationController extends BaseController {
 
 	/*

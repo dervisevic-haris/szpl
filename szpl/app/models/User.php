@@ -57,4 +57,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 	//Explicitno naznacavamo da je Tabela user povezana sa Tabelom Company preko Company_id foreign key-a
 		return $this->belongsTo('Company','Company_id');
 	}	
+	public function FlightReservation(){
+		return $this->hasMany('FlightReservation');
+	}
+
 }

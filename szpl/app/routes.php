@@ -41,7 +41,6 @@ Route::controller('home/users', 'AdminController');
 //Route::post('home/users/delete',array('uses'=>'AdminController@deleteUser'));
 //Route::post('home/users/update',array('uses'=>'AdminController@updateUser'));
 //Route::get('home/users',array('uses'=>'AdminController@showUsers'))->before('auth');
-
 //get userGroups
 //Route::get('home/usergroups',array('uses'=>'AdminController@usergroups'))->before('auth');
 
@@ -51,6 +50,8 @@ Route::post('home/usergroups/update',array('uses'=>'AdminController@updateUserGr
 Route::get('home/airplanes',array('uses'=>'CompanyController@airplanes'))->before('auth');
 
 Route::get('home/flights',array('uses'=>'CompanyController@flights'))->before('auth');
+
+Route::post('home/flights/{id}',array('uses'=>'FlightController@getFlight'))->before('auth');
 
 Route::get('home/flights/create',array('uses'=>'CompanyController@getCreateFlight'))->before('auth');
 
@@ -71,6 +72,9 @@ Route::post('/home/airplanes/create',array('uses'=>'AirplaneController@createAir
 Route::post('/home/flights/create',array('uses'=>'FlightController@createFlight'));
 
 Route::get('home/flightreservation',array('uses'=>'FlightController@getFlightReservation'));
+
+//Ruta zaduzena za unos unoz rezervacije leta ,pozvana iz ShowFlihtReservationViewa putem Ajaxa
+Route::post('home/flightreservation',array('uses'=>'FlightController@postReservationFlight'));
 
 Route::post('/home/flightreservation/search',array('uses'=>'FlightController@searchFlights'));
 

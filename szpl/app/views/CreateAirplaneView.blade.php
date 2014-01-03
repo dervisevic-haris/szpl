@@ -1,4 +1,4 @@
-@extends('layout.AirplaneLayout')
+disextends('layout.AirplaneLayout')
 @section('someScript')
 <script type="text/javascript">
 $( document ).ready(function() {
@@ -44,6 +44,7 @@ position: absolute;
 left:33%;
 
 }
+
 </style>
 
 @endsection

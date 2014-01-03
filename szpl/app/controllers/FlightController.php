@@ -33,10 +33,31 @@ class FlightController extends BaseController {
 		return View::make('FlightReservationView')->with('name',$u.' '.Auth::user()->username);
 	}
 	public function searchFlights(){
-		$sviLetovi = Flight::where('departure_date','<=',$_POST['dateDeparture'])
-		->where('departure','=',$_POST['inputFrom'])
-		->where('arrival','=',$_POST['inputTo'])
-		->get();
-		return $sviLetovi;
+		$id=Auth::user()->id;
+		$u=User::find($id)->userGroup()->first()->naziv;
+
+
+		$sviLetovi = Flight::orWhere(function($query)
+            {
+                $query->where('departure_date','<=',$_POST['dateDeparture'])
+                      ->where('departure','=',$_POST['inputFrom'])
+                      ->where('arrival','=',$_POST['inputTo']);
+                    
+            })->paginate(10);
+		
+		return View::make('ShowFlightsReservationView')->with(array('name'=>$u.' '.Auth::user()->username,'letovi'=>$sviLetovi));
+	}
+	public function getFlight(){
+		$izabraniLet = Flight::find($_POST['id']);
+		return $izabraniLet->toJson();
+	}
+
+	public function postReservationFlight(){
+		$rezervacijaLeta = new FlightReservation();
+		$rezervacijaLeta->flight_id=$_POST['flightId'];
+		$rezervacijaLeta->user_id=Auth::user()->id;
+		$rezervacijaLeta->valid=1;
+		$rezervacijaLeta->save();
+		return json_encode((true));
 	}
 }
