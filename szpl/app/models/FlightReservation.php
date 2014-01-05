@@ -10,7 +10,7 @@ class FlightReservation extends Eloquent {
 	}
 	 public function User() {
 	 	
-		return $this->belongsTo('users','user_id');
+		return $this->belongsTo('user','user_id');
 	}
 
 } 

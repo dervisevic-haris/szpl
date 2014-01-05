@@ -1,4 +1,4 @@
-disextends('layout.AirplaneLayout')
+@extends('layout.AirplaneLayout')
 @section('someScript')
 <script type="text/javascript">
 $( document ).ready(function() {

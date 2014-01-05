@@ -19,6 +19,13 @@ class BaseController extends Controller {
 		return $u;
 	}
 
+	public static function Atentifikacija(){
+		if(Auth::check())
+			return Auth::user()->username;
+		else 
+			return "Guest";
+	}
+
 	public static function getUserRoleId($userRoleString)
 	{
 		if($userRoleString=="Administrator")

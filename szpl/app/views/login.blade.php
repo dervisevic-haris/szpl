@@ -59,4 +59,11 @@
         </div>
     </div>
 </div>
+ <div class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+            <div class="container">
+                  <p class="muted"> SZRL</p>
+            </div>
+        </div>
+    </div>
 @endsection

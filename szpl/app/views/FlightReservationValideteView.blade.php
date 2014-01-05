@@ -21,20 +21,24 @@ $(document).ready(function() {
 	$("#Change").on("click", function(e){
       e.preventDefault();
       var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
+       $('#myModal').modal('show');
+     
+    });
 
+  $("#DropReservation").on("click", function(e){
+      e.preventDefault();
+
+      var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
       $.ajax({
-        url: '/project/szpl/public/home/flights/id',
+        url: '/project/szpl/public/home/flightreservation/drop',
         type: 'POST',
         dataType: 'json',
-        data: {id:  id},
+        data: {param1: id},
       })
-      .done(function(letovi) {
+      .done(function() {
+        alert('izbrisali ste rezervaciju');
+        window.location ="/project/szpl/public/home/flightreservation/payment";
         console.log("success");
-      
-        $('#inputDeparture').attr("value",letovi.departure);
-        $('#arrival').val(letovi.arrival);
-
-       $('#myModal').modal('show');
       })
       .fail(function() {
         console.log("error");
@@ -43,81 +47,79 @@ $(document).ready(function() {
         console.log("complete");
       });
       
-
+     
     });
 
-  $("#SaveChange").on("click", function(e){
+    $("#SaveChange").on("click", function(e){
       e.preventDefault();
-       var id= $.trim($('input[name=radioBtn]:checked').attr('value'));
-        $.ajax({
-          url: '/project/szpl/public/home/flightreservation',
-          type: 'POST',
-          dataType: 'json',
-          data: {
-            flightId: id
-            },
-        })
-        .success(function(data){
-           alert('uspijesno ste rezervisali let');
-        })
-        .done(function(data) {
-          console.log("success");
-        })
-        .fail(function() {
-          console.log("error");
-        })
-        .always(function() {
-          console.log("complete");
-        });
-        
+      var fid= $.trim($('input[name=radioBtn]:checked').attr('value'));
 
+       $.ajax({
+         url: '/project/szpl/public/home/flightreservation/id',
+         type: 'POST',
+         dataType: 'json',
+         data: {id: fid},
+       })
+       .done(function() {
+         console.log("success");
+         alert('uspijesno validirana rezervacija');
+          $('input[name=radioBtn]:checked').checked=false;    
+          window.location ="/project/szpl/public/home/flightreservation/payment";
+       })
+       .fail(function() {
+         console.log("error");
+       })
+       .always(function() {
+         console.log("complete");
+       });
+       
+     
     });
+
+  
 
 
   	
   });
 </script>
-@endsectionhttp://localhost/project/szpl/public/home/flightreservation/search
+@endsection
 
 @section('mainContent')
+
 	<table id="my-table-sorter" class="table table-striped"> 
   <thead> 
     <tr> 
       <th>Chosen</th>
       <th>Flight Name</th>
-      <th>Departure</th> 
-      <th>Arrival</th> 
-      <th>Departure Date</th> 
-      <th>Departure Time</th> 
-      <th>Arrival Date</th> 
-      <th>Arrival Time</th>
-      <th>One way Ticket</th> 
-      <th>Return Ticket</th>
+      <th>Departure date</th> 
+      <th>Departure time</th> 
+      <th>Plane</th> 
+      <th>Status</th> 
     </tr> 
   </thead> 
   <tbody> 
      <?php 
-    foreach ($letovi as $u)
+    foreach ($rezervacije as $u)
     {
     ?>
     <tr> 
+      <?php if ($u->valid==0) {?>
       <td value='<?php echo $u->id  ?>' ><input type="radio" id="radioBtn" name="radioBtn" class="radio" value='<?php echo $u->id  ?>'></input></td>
-      <td >{{$u->name}}</td> 
-      <td>{{$u->departure}}</td> 
-      <td>{{$u->arrival}}</td> 
-      <td>{{$u->departure_date}}</td> 
-      <td>{{$u->departure_time}}</td> 
-      <td>{{$u->arrival_date}}</td> 
-      <td>{{$u->arrival_time}}</td> 
-      <td>{{$u->one_way_ticket_price}}</td> 
-      <td>{{$u->return_ticket_price}}</td> 
+      <?php } else { ?>
+      <td></td>
+      <?php } ?>
+      <td>{{$u->Flight()->first()->name}}</td> 
+      <td>{{$u->Flight()->first()->departure_date}}</td>
+      <td>{{$u->Flight()->first()->departure_time}}</td>  
+      <td>{{$u->Flight()->first()->Airplane()->first()->name}}</td> 
+      <td><?php if($u->valid==1){ echo "Rezervacija potvrđena"; }else echo "Rezervacija niije potvrđena";?>    </td> 
     </tr> 
     <?php }?>
   </tbody> 
 </table>
-<?php echo $letovi->links(); ?>
 <div class="Buttons">
-  <input type="button" id="Change" class="btn" name="Change" value="Rezervisi let"></input>
+  <input type="button" id="Change" class="btn" name="Change" value="Potvrdi Rezervaciju"></input>
+  <input type="button" id="DropReservation" class="btn" name="Change" value="Otkazi Rezervaciju"></input>
 </div>
 
 <div id="myModal" class="modal hide fade">
@@ -128,23 +130,11 @@ $(document).ready(function() {
   <div class="modal-body">
     <input type="hidden" name="hidden" id="hidden"></input>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Departure</label>
+      <label class="control-label" for="inputEmail">Unesite broj kreditne kartice</label>
     <div class="controls">
-      <input type="text" id="inputDeparture" placeholder="" disabled>
+      <input type="text" id="inputDeparture" placeholder="broj kartice" >
     </div>
      </div>
-     <div class="control-group">
-      <label class="control-label" for="arrival">Arival</label>
-    <div class="controls">
-      <input type="text" id="arrival" placeholder="" disabled>
-    </div>
-     </div>
- <label class="control-label" for="inputEmail">Reservation for </label>
-  <select id="Class">
-  <option >Economic Class</option>
-  <option >Buisness Class</option>
-  <option >First Class</option>
-</select>
   <div class="modal-footer">
     <a href="" class="btn" data-dismiss="modal">Close</a>
     <a href="" id="SaveChange" class="btn btn-primary">Potvrdi Rezervaciju</a>

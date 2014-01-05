@@ -51,7 +51,8 @@ Route::get('home/airplanes',array('uses'=>'CompanyController@airplanes'))->befor
 
 Route::get('home/flights',array('uses'=>'CompanyController@flights'))->before('auth');
 
-Route::post('home/flights/{id}',array('uses'=>'FlightController@getFlight'))->before('auth');
+
+
 
 Route::get('home/flights/create',array('uses'=>'CompanyController@getCreateFlight'))->before('auth');
 
@@ -71,12 +72,20 @@ Route::post('/home/airplanes/create',array('uses'=>'AirplaneController@createAir
 
 Route::post('/home/flights/create',array('uses'=>'FlightController@createFlight'));
 
+Route::post('/home/flightreservation/drop',array('uses'=>'FlightController@dropFlightReservation'));
+
 Route::get('home/flightreservation',array('uses'=>'FlightController@getFlightReservation'));
+
+Route::post('home/flights/{id}',array('uses'=>'FlightController@getFlight'))->before('auth');
 
 //Ruta zaduzena za unos unoz rezervacije leta ,pozvana iz ShowFlihtReservationViewa putem Ajaxa
 Route::post('home/flightreservation',array('uses'=>'FlightController@postReservationFlight'));
 
+Route::get('home/flightreservation/payment',array('uses'=>'FlightController@payment'));
+
 Route::post('/home/flightreservation/search',array('uses'=>'FlightController@searchFlights'));
+
+Route::post('/home/flightreservation/{id}',array('uses'=>'FlightController@validateFlight'))->before('auth');
 
 Route::get('/guest',function(){
 

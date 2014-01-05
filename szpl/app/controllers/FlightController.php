@@ -24,17 +24,30 @@ class FlightController extends BaseController {
 
 		$obj = new stdClass;
 		$obj->message = "Uspijesno ste unijeli let";
-		$obj->url = "/project/szpl/public/home/flights/create";
 		return json_encode($obj);
 	}
 	public function getFlightReservation(){
+		if(Auth::check())
+		{
 		$id=Auth::user()->id;
 		$u=User::find($id)->userGroup()->first()->naziv;
-		return View::make('FlightReservationView')->with('name',$u.' '.Auth::user()->username);
+		$u.=" ".Auth::user()->username;
+		}
+		else 
+			$u="guest";
+
+		return View::make('FlightReservationView')->with('name',$u.' ');
 	}
 	public function searchFlights(){
+		if(Auth::check())
+		{
 		$id=Auth::user()->id;
 		$u=User::find($id)->userGroup()->first()->naziv;
+		$u.=" ".Auth::user()->username;
+	    }
+		else 
+			$u="guest";
+
 
 
 		$sviLetovi = Flight::orWhere(function($query)
@@ -45,19 +58,64 @@ class FlightController extends BaseController {
                     
             })->paginate(10);
 		
-		return View::make('ShowFlightsReservationView')->with(array('name'=>$u.' '.Auth::user()->username,'letovi'=>$sviLetovi));
+		return View::make('ShowFlightsReservationView')->with(array('name'=>$u,'letovi'=>$sviLetovi));
 	}
+
 	public function getFlight(){
+		if(isset($_POST['id'])){
 		$izabraniLet = Flight::find($_POST['id']);
 		return $izabraniLet->toJson();
+	}
+	}
+
+	public function payment(){
+
+		if(!Auth::check())
+  			return Redirect::to('/registration');
+
+		if(Auth::check())
+		{
+		$id=Auth::user()->id;
+		$u=User::find($id)->userGroup()->first()->naziv;
+		$u.=" ".Auth::user()->username;
+		$guest=false;
+	    }
+		else 
+		{$u="guest";
+	
+		}
+			
+		if(Auth::check())
+		$rezervacije = FlightReservation::where('user_id','=',Auth::user()->id)->get();
+		else 
+			$rezervacije="";
+				
+		return View::make('FlightReservationValideteView')->with(array('name'=>$u,'rezervacije'=>$rezervacije));
+		
 	}
 
 	public function postReservationFlight(){
 		$rezervacijaLeta = new FlightReservation();
 		$rezervacijaLeta->flight_id=$_POST['flightId'];
 		$rezervacijaLeta->user_id=Auth::user()->id;
-		$rezervacijaLeta->valid=1;
+		$rezervacijaLeta->valid=0;
 		$rezervacijaLeta->save();
 		return json_encode((true));
+	}
+	public function validateFlight(){
+
+		$ValidirajRezervaciju = FlightReservation::find($_POST['id']);
+		$ValidirajRezervaciju->valid=1;
+		$ValidirajRezervaciju->save();
+		return json_encode(true);
+
+	}
+	public function dropFlightReservation(){
+		if(isset($_POST['param1']))
+		{
+			$Rezervacija = FlightReservation::find($_POST['param1']);
+			$Rezervacija->delete();
+			return json_encode(true);
+		}
 	}
 }

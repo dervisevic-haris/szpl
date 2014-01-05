@@ -6,6 +6,10 @@ class Flight extends Eloquent {
 	public function FlightReservation(){
 		return $this->hasMany('FlightReservation');
 	}
+	 public function Airplane() {
+	 	
+		return $this->belongsTo('Airplane','airplane_id');
+	}
 
 } 
 
