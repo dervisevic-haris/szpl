@@ -88,8 +88,8 @@ $("#Change").on("click", function(e){
 	<table id="my-table-sorter" class="table table-striped"> 
   <thead> 
     <tr> 
-      <th>Change</th>
-      <th>User Group</th>
+      <th>Izmijeni</th>
+      <th>Korisnička grupa</th>
     </tr> 
   </thead> 
   <tbody> 
@@ -106,19 +106,19 @@ $("#Change").on("click", function(e){
   </tbody> 
 </table>
 <div class="Buttons">
-  <input type="button" id="Change" class="btn" name="Change" value="Izmjeni Podatke"></input>
-  <input type="button" id="Delete" class="btn" name="Change" value="Izbrisi Korisika"></input>
+  <input type="button" id="Change" class="btn" name="Change" value="Izmijeni podatke"></input>
+  <input type="button" id="Delete" class="btn" name="Change" value="Izbriši korisika"></input>
 </div>
 
 <div id="myModal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Izmjena Korisnika</h3>
+    <h3>Izmijena korisnika</h3>
   </div>
   <div class="modal-body">
     <input type="hidden" name="hidden" id="hidden"></input>
     <div class="control-group">
-      <label class="control-label" for="inputName">Naziv</label>
+      <label class="control-label" for="inputName">Naziv:</label>
     <div class="controls">
       <input type="text" id="inputName" placeholder="NewName">
     </div>

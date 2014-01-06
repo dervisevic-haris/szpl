@@ -10,7 +10,7 @@
 
  <li class="dropdown">
 	<a class="dropdown-toggle" data-toggle="dropdown" href="" >   <i class="caret"> </i>
-		Podesavanja
+		Podešavanja
 	</a>
 		<ul class="dropdown-menu">
 			<li><a href="/project/szpl/public/home/airplanes"> Avioni </a></li>

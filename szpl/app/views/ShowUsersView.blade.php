@@ -125,7 +125,7 @@ $(document).ready(function() {
         
 
         if(CompanyName!="" && ChosedCompany!="")
-          alert('Nova kompanija ili vec Postojeca?');
+          alert('Nova kompanija ili vec postojeća?');
         else
         {
        $.ajax({
@@ -177,12 +177,12 @@ $(document).ready(function() {
 	<table id="my-table-sorter" class="table table-striped"> 
   <thead> 
     <tr> 
-      <th>Change</th>
-      <th>Id</th>
-      <th>Username</th> 
-      <th>Address</th> 
+      <th>Izmijeni</th>
+      <th>ID</th>
+      <th>Korisničko ime</th> 
+      <th>Adresa</th> 
       <th>Email</th> 
-      <th>Role</th> 
+      <th>Korisnička grupa</th> 
     </tr> 
   </thead> 
   <tbody> 
@@ -203,53 +203,53 @@ $(document).ready(function() {
 </table>
 <?php echo $users->links(); ?>
 <div class="Buttons">
-  <input type="button" id="Change" class="btn" name="Change" value="Izmjeni Podatke"></input>
-  <input type="button" id="Delete" class="btn" name="Change" value="Izbrisi Korisika"></input>
+  <input type="button" id="Change" class="btn" name="Change" value="Izmijeni podatke"></input>
+  <input type="button" id="Delete" class="btn" name="Change" value="Izbriši korisnika"></input>
 </div>
 
 <div id="myModal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Izmjena Korisnika</h3>
+    <h3>Izmijena korisnika</h3>
   </div>
   <div class="modal-body">
     <input type="hidden" name="hidden" id="hidden"></input>
     <div class="control-group">
-      <label class="control-label" for="inputUsername">Username</label>
+      <label class="control-label" for="inputUsername">Korisničko ime:</label>
     <div class="controls">
       <input type="text" id="inputUsername" placeholder="Username">
     </div>
      </div>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Email</label>
+      <label class="control-label" for="inputEmail">Email:</label>
     <div class="controls">
       <input type="text" id="inputEmail" placeholder="Email">
     </div>
      </div>
       <div class="control-group">
-      <label class="control-label" for="inputAddress">Address</label>
+      <label class="control-label" for="inputAddress">Adresa:</label>
     <div class="controls">
       <input type="text" id="inputAddress" placeholder="Address">
     </div>
      </div>
   <div class="control-group">
-    <label class="control-label" for="inputPassword">Password</label>
+    <label class="control-label" for="inputPassword">Šifra:</label>
     <div class="controls">
       <input type="password" id="inputPassword" placeholder="Password">
     </div>
   </div>
-   <label class="control-label" for="inputUsername">User role</label>
+   <label class="control-label" for="inputUsername">Korisnička grupa:</label>
 <select id="userRole">
   <option >Administrator</option>
   <option >Korisnik</option>
   <option >Aviokompanija</option>
 </select>
 <div class="Company">
- <label class="control-label" for="inputCompany">Company name</label>
+ <label class="control-label" for="inputCompany">Naziv kompanije:</label>
     <div class="controls">
       <input type="text" id="inputCompany" placeholder="New Company">
       <br>
-      <a href="" id="ChoseCompany" class="btn btn-primary">Izaberite vec postojecu</a>
+      <a href="" id="ChoseCompany" class="btn btn-primary">Izaberite već postojeću</a>
     </div>
     <div id="CompanyList">
   <select id="ChosedCompany">

@@ -46,7 +46,7 @@
 <div class="container">
     <div class="row">
         <div class="Container">
-            <h1 class="text-center login-title">Sign in</h1>
+            <h1 class="text-center login-title">Prijava</h1>
             <div class="account-wall" id="ControlGroup">
                  <form class="form-signin" id="loginForm" method="POST" action="/project/szpl/public/login">
                 <input type="text" class="form-control" id="inputUsername" name="name" placeholder="Username" required autofocus>
@@ -62,7 +62,7 @@
  <div class="navbar navbar-fixed-bottom">
         <div class="navbar-inner">
             <div class="container">
-                  <p class="muted"> SZRL</p>
+                  <p class="muted"> SZRIPL</p>
             </div>
         </div>
     </div>

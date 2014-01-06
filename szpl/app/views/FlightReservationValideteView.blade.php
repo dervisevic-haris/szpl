@@ -36,7 +36,7 @@ $(document).ready(function() {
         data: {param1: id},
       })
       .done(function() {
-        alert('izbrisali ste rezervaciju');
+        alert('Izabrana rezervacija izbrisana!');
         window.location ="/project/szpl/public/home/flightreservation/payment";
         console.log("success");
       })
@@ -62,7 +62,7 @@ $(document).ready(function() {
        })
        .done(function() {
          console.log("success");
-         alert('uspijesno validirana rezervacija');
+         alert('Izabrana rezervacija uspiješno potvrđena!');
           $('input[name=radioBtn]:checked').checked=false;    
           window.location ="/project/szpl/public/home/flightreservation/payment";
        })
@@ -89,11 +89,11 @@ $(document).ready(function() {
 	<table id="my-table-sorter" class="table table-striped"> 
   <thead> 
     <tr> 
-      <th>Chosen</th>
-      <th>Flight Name</th>
-      <th>Departure date</th> 
-      <th>Departure time</th> 
-      <th>Plane</th> 
+      <th>Izabrani</th>
+      <th>Naziv leta</th>
+      <th>Datum polaska</th> 
+      <th>Vrijeme polaska</th> 
+      <th>Avion sa kojim se putuje</th> 
       <th>Status</th> 
     </tr> 
   </thead> 
@@ -118,8 +118,8 @@ $(document).ready(function() {
   </tbody> 
 </table>
 <div class="Buttons">
-  <input type="button" id="Change" class="btn" name="Change" value="Potvrdi Rezervaciju"></input>
-  <input type="button" id="DropReservation" class="btn" name="Change" value="Otkazi Rezervaciju"></input>
+  <input type="button" id="Change" class="btn" name="Change" value="Potvrdi rezervaciju"></input>
+  <input type="button" id="DropReservation" class="btn" name="Change" value="Otkaži rezervaciju"></input>
 </div>
 
 <div id="myModal" class="modal hide fade">
@@ -130,13 +130,13 @@ $(document).ready(function() {
   <div class="modal-body">
     <input type="hidden" name="hidden" id="hidden"></input>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Unesite broj kreditne kartice</label>
+      <label class="control-label" for="inputEmail">Unesite broj kreditne kartice:</label>
     <div class="controls">
       <input type="text" id="inputDeparture" placeholder="broj kartice" >
     </div>
      </div>
   <div class="modal-footer">
     <a href="" class="btn" data-dismiss="modal">Close</a>
-    <a href="" id="SaveChange" class="btn btn-primary">Potvrdi Rezervaciju</a>
+    <a href="" id="SaveChange" class="btn btn-primary">Potvrdi rezervaciju</a>
   </div>
 @endsection

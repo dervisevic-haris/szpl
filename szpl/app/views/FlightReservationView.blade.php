@@ -76,7 +76,7 @@ left:33%;
                            
                         
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-lg btn-primary" type="submit" id="createFlight">Pretrazi Letove</button>
+                                <button class="btn btn-lg btn-primary" type="submit" id="createFlight">Pretraži Letove</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button class="btn btn-danger" type="button" id="cancelButton" action="/">Odustani</button> 
                         

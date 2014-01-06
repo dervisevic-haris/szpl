@@ -14,7 +14,7 @@ class AirplaneController extends BaseController {
 		$avion->save();
 
 		$obj = new stdClass;
-		$obj->message = "Uspijesno ste unijeli avion";
+		$obj->message = "Uspiješno Ste unijeli avion";
 		$obj->url = "/project/szpl/public/home/airplanes/create";
 		return json_encode($obj);
 	}

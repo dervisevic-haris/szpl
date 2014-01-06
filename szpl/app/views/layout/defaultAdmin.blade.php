@@ -1,11 +1,11 @@
 @extends('layout.default')
 
 @section('content')
-Dobrodosli
+Dobrodošli
 @endsection
 @if(BaseController::getUserRole(Auth::user()->id)=="Administrator")
 @section('mainLink')
-Podesavanja
+Podešavanja
 @endsection
 @endif
 
@@ -13,7 +13,7 @@ Podesavanja
 Pregled svih korisnika
 @endsection
 @section('link1.2')
-Korisnicke grupe
+Pregled korisničkih grupa
 @endsection
 
 
@@ -25,7 +25,7 @@ Korisnicke grupe
 @section('AdminLinks')
 	 <li class="dropdown">
 							 <a class="dropdown-toggle" data-toggle="dropdown" href="" >   <i class="caret"> </i>
-							 	Podesavanja
+							 	Podešavanja
 							 </a>
 									<ul class="dropdown-menu">
 										<li><a href="/project/szpl/public/home/users/showusers"> @yield('link1.1') </a></li>
@@ -34,4 +34,12 @@ Korisnicke grupe
 						  </li>
 @endsection
 
-
+@section('mainContent')
+ <div class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+            <div class="container">
+                  <p class="muted"> SZRIPL</p>
+            </div>
+        </div>
+    </div>
+@endsection

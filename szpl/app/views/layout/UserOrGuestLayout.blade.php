@@ -1,6 +1,6 @@
 @extends('layout.default')
 @section('content')
-Dobrodosli
+Dobrodošli
 @endsection
 @section('mainLink')
 Rezervacija leta

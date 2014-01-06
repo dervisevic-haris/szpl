@@ -23,7 +23,7 @@ class FlightController extends BaseController {
 		
 
 		$obj = new stdClass;
-		$obj->message = "Uspijesno ste unijeli let";
+		$obj->message = "Uspiješno Ste unijeli let";
 		return json_encode($obj);
 	}
 	public function getFlightReservation(){

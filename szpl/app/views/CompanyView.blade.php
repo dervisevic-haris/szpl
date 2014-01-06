@@ -65,12 +65,12 @@ $(document).ready(function() {
 
 @section('mainContent')
 @if($prviput==1)
-<div class="alert alert-info" id="alert"><h2>Podaci o kompaniji nisu uneseni</h2>
-	<p>Molimo vas da unesete osnovne informacije o kompaniji,kako bi bili u stanju nastaviti koristi nasu aplikaciju</p>
+<div class="alert alert-info" id="alert"><h2>Podaci o aviokompaniji nisu uneseni!</h2>
+	<p>Molimo Vas da unesete osnovne informacije o kompaniji.</p>
 	 <button class="btn btn-primary" id="InputData" type="button">Unesite Podatke</button>
 </div>
 @endif
-<div class="alert alert-info .alert-dismis" id="InfoPanel">Uspijesno ste popunili informacije o kompaniji
+<div class="alert alert-info .alert-dismis" id="InfoPanel">Uspiješno Ste unijeli informacije o kompaniji
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>
 <div id="myModal" class="modal hide fade">
@@ -83,37 +83,37 @@ $(document).ready(function() {
     if(isset($CompanyId))
       echo $CompanyId ?>'></input>
     <div class="control-group">
-      <label class="control-label" for="inputName">Naziv Kompanije</label>
+      <label class="control-label" for="inputName">Naziv aviokompanije:</label>
     <div class="controls">
       <input type="text" id="inputName" placeholder="Name">
     </div>
      </div>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Email</label>
+      <label class="control-label" for="inputEmail">Email:</label>
     <div class="controls">
       <input type="text" id="inputEmail" placeholder="Email">
     </div>
      </div>
       <div class="control-group">
-      <label class="control-label" for="inputAddress">Address</label>
+      <label class="control-label" for="inputAddress">Adresa:</label>
     <div class="controls">
       <input type="text" id="inputAddress" placeholder="Address">
     </div>
      </div>
   <div class="control-group">
-    <label class="control-label" for="inputCity">City</label>
+    <label class="control-label" for="inputCity">Grad:</label>
     <div class="controls">
       <input type="text" id="inputCity" placeholder="City">
     </div>
   </div>
     <div class="control-group">
-    <label class="control-label" for="inputCountry">Country</label>
+    <label class="control-label" for="inputCountry">Država:</label>
     <div class="controls">
       <input type="text" id="inputCountry" placeholder="Country">
     </div>
   </div>
    <div class="control-group">
-    <label class="control-label" for="inputTelephone">Kontakt Telefon:</label>
+    <label class="control-label" for="inputTelephone">Kontakt telefon:</label>
     <div class="controls">
       <input type="text" id="inputTelephone" placeholder="Tel">
     </div>

@@ -63,7 +63,7 @@ class AdminController extends BaseController {
 
 		//Dummy class objekat koji cemo vratiti kao json,u sebi sadrzi da parametre poruke(da li je uspijesno modifikacija) i url na koji se vrsi redirect
 		$obj = new stdClass;
-		$obj->message="uspijesno modifikacija";
+		$obj->message="Uspiješna modifikacija";
 		$obj->redirectUrl="/project/szpl/public/home/users/showusers";
 
 
@@ -104,7 +104,7 @@ class AdminController extends BaseController {
 	public function updateUserGroup(){
 
 		$obj = new stdClass;
-		$obj->message="uspijesno modifikacija";
+		$obj->message="Uspiješna modifikacija";
 		$obj->redirectUrl="/project/szpl/public/home/users/usergroups";
 		
 		$id= $_POST['uid'];

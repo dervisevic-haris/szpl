@@ -8,10 +8,10 @@
     					 <img src="img/AVION_LAN.jpg" alt="">
     				 </div>
     				
-  					<p> Upoznajte se sa nasom aplikacijom i pogledajte koje mogucnosti nudi. 
+  					<p> Upoznajte se sa našom aplikacijom i pogledajte koje mogucnosti nudi. 
   						
   						</p>
-					 <a class="btn btn-info" href="#ura" data-toggle="modal" role="button">Saznaj vise</a>
+					 <a class="btn btn-info" href="#ura" data-toggle="modal" role="button">Saznaj više</a>
 
 			 </div>
 			  <div class="span3">
@@ -80,7 +80,7 @@
       <div class="navbar navbar-fixed-bottom">
 		<div class="navbar-inner">
 			<div class="container">
-				  <p class="muted"> SZPL</p>
+				  <p class="muted"> SZRIPL</p>
 			</div>
 		</div>
 	</div>

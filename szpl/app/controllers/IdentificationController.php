@@ -26,14 +26,14 @@ class IdentificationController extends BaseController {
 	{
 		$obj = new stdClass;
 		$obj->success = false;
-		$obj->message = "Pogresni pristupni podaci";
+		$obj->message = "Pogrešni pristupni podaci";
 		$obj->redirectUrl ="/project/szpl/public/home";
 
 		$user = array ('username'=>$_POST['name'],'password'=>$_POST['password']); // Kreiramo niz sa podacima poslatih sa forme i spasvamo u varijablu user koju proslijedjujemo Auth klasi i njenoj metodi Attempt da provjeri da li postoji takav user u bazi i ukoliko postoji da u sessiju doda njegov ID!
 
         if (Auth::attempt($user)) {
            	$obj->success=true;
-           	$obj->message="Uspijesno logiranje";
+           	$obj->message="Uspiješna prijava";
         }
 		return json_encode($obj);	
 	}

@@ -53,7 +53,7 @@ class CompanyController extends BaseController {
 			
 			$obj = new stdClass;
 			$obj->success = false;
-			$obj->message = "Uspijesno ste azurirali informacije o kompaniji";
+			$obj->message = "Uspiješno Ste ažurirali informacije o kompaniji";
 
 			$idKompanije = $_POST['cid'];
 			//Iz baze pronalazimo kompaniju sa ovim id-om

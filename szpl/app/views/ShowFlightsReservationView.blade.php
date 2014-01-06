@@ -58,7 +58,7 @@ $(document).ready(function() {
             },
         })
         .success(function(data){
-           alert('uspijesno ste rezervisali let');
+           alert('Uspiješno ste rezervisali let');
         })
         .done(function(data) {
           console.log("success");
@@ -77,22 +77,22 @@ $(document).ready(function() {
   	
   });
 </script>
-@endsectionhttp://localhost/project/szpl/public/home/flightreservation/search
+@endsection
 
 @section('mainContent')
 	<table id="my-table-sorter" class="table table-striped"> 
   <thead> 
     <tr> 
-      <th>Chosen</th>
-      <th>Flight Name</th>
-      <th>Departure</th> 
-      <th>Arrival</th> 
-      <th>Departure Date</th> 
-      <th>Departure Time</th> 
-      <th>Arrival Date</th> 
-      <th>Arrival Time</th>
-      <th>One way Ticket</th> 
-      <th>Return Ticket</th>
+      <th>Izabrani</th>
+      <th>Naziv leta</th>
+      <th>Polazište</th> 
+      <th>Odredište</th> 
+      <th>Datum polaska</th> 
+      <th>Vrijeme polaska</th> 
+      <th>Datum dolaska</th> 
+      <th>Vrijeme dolaska</th>
+      <th>Karta u I smijeru</th> 
+      <th>Povratna karta</th>
     </tr> 
   </thead> 
   <tbody> 
@@ -117,7 +117,7 @@ $(document).ready(function() {
 </table>
 <?php echo $letovi->links(); ?>
 <div class="Buttons">
-  <input type="button" id="Change" class="btn" name="Change" value="Rezervisi let"></input>
+  <input type="button" id="Change" class="btn" name="Change" value="Rezerviši let"></input>
 </div>
 
 <div id="myModal" class="modal hide fade">
@@ -128,25 +128,25 @@ $(document).ready(function() {
   <div class="modal-body">
     <input type="hidden" name="hidden" id="hidden"></input>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">Departure</label>
+      <label class="control-label" for="inputEmail">Polazište:</label>
     <div class="controls">
       <input type="text" id="inputDeparture" placeholder="" disabled>
     </div>
      </div>
      <div class="control-group">
-      <label class="control-label" for="arrival">Arival</label>
+      <label class="control-label" for="arrival">Odredište:</label>
     <div class="controls">
       <input type="text" id="arrival" placeholder="" disabled>
     </div>
      </div>
- <label class="control-label" for="inputEmail">Reservation for </label>
+ <label class="control-label" for="inputEmail">Rezervacija za:</label>
   <select id="Class">
-  <option >Economic Class</option>
-  <option >Buisness Class</option>
-  <option >First Class</option>
+  <option >Ekonomska Klasa</option>
+  <option >Biznis Klasa</option>
+  <option >Prva Klasa</option>
 </select>
   <div class="modal-footer">
     <a href="" class="btn" data-dismiss="modal">Close</a>
-    <a href="" id="SaveChange" class="btn btn-primary">Potvrdi Rezervaciju</a>
+    <a href="" id="SaveChange" class="btn btn-primary">Rezerviši</a>
   </div>
 @endsection

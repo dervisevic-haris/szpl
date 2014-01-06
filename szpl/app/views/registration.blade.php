@@ -14,10 +14,10 @@
 <div class="container">
     <div class="row">
             <div class="Container">
-            <h1 class="login-title">Registration</h1>
+            <h1 class="login-title">Registracija</h1>
             <div class="account-wall" id="ControlGroup">
                 <form class="form-signin" id="loginForm" method="POST" action="/project/szpl/public/registration">
-                <label class="control-label" for="inputUsername" >Username:</label>
+                <label class="control-label" for="inputUsername" >Korisničko ime:</label>
                     <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" required>
                 <label class="control-label" for="" >Password:</label> 
                     <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password" required>
@@ -25,7 +25,7 @@
                     <input type="password" class="form-control" name="passwordRetyped" id="inputPassword" placeholder="Password" required>
                  <label class="control-label" for="inputEmail" >Email:</label>
                     <input type="text" class="form-control" id="inputEmail" name="email" placeholder="Email" required>
-                <label class="control-label" for="inputEmail" >Address:</label>
+                <label class="control-label" for="inputEmail" >Adresa:</label>
                     <input type="text" class="form-control" id="inputEmail" name="address" placeholder="Address" required>
                    <div id="buttons">
                     <button class="btn btn-lg btn-primary" type="submit" id="loginBtn">
@@ -38,7 +38,7 @@
             <div class="onsucess">
              @if(isset($success))
                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                 <div class="alert alert-success .alert-dismissable" >Uspijesno ste se registrovali</div>   
+                 <div class="alert alert-success .alert-dismissable" >Uspiješno Ste se registrovali</div>   
             @endif
             </div>
 

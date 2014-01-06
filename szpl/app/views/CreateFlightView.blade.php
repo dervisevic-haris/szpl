@@ -150,7 +150,7 @@
                                        </div>
                               </div><br>
                         
-                            <label class="control-label" for="inputUsername">Avion</label>
+                            <label class="control-label" for="inputUsername">Avion:</label>
                             <div class="controls">
                                 <select id="Airplanes">
                                     <?php foreach($avioni as $a)
